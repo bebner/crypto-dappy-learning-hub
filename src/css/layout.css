@@ -1,0 +1,45 @@
+body {
+  margin: 1rem;
+  padding: 0;
+  background: #DA4453; 
+  background: -webkit-linear-gradient(to right, #89216B, #DA4453); 
+  background: linear-gradient(to right, #89216B, #DA4453);
+  font-family: "Overpass";
+  font-weight: 200;
+  color: white;
+  overflow: hidden;
+  text-align: left;
+}
+
+main {
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3 {
+  font-family: "Monument Bold";
+  /* text-decoration: underline; */
+  
+}
+
+h2, h3 {
+  margin-top: 3rem;
+}
+
+a {
+  color: white;
+  border-bottom: 1px dashed white;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+p, li {
+  font-size: 1.1rem;
+  line-height: 1.75rem;
+}
+
+video {
+  max-width: 800px;
+}
