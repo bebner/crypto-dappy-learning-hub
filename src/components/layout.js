@@ -51,7 +51,7 @@ const Content = styled.div`
   flex: 1;
 
   @media (max-width: 700px) {
-    max-height: calc(100vh - 15rem);
+    max-height: none;
     margin-left: 0;
     background: none;
     padding: 0;

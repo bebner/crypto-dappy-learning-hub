@@ -7,7 +7,7 @@ body {
   font-family: "Overpass";
   font-weight: 200;
   color: white;
-  overflow: hidden;
+  overscroll-behavior-y: none;
   text-align: left;
 }
 
@@ -18,8 +18,6 @@ main {
 
 h1, h2, h3 {
   font-family: "Monument Bold";
-  /* text-decoration: underline; */
-  
 }
 
 h2, h3 {
@@ -35,6 +33,7 @@ a {
 img {
   max-width: 100%;
 }
+
 p, li {
   font-size: 1.1rem;
   line-height: 1.75rem;
