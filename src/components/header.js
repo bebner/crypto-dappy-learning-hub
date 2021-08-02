@@ -13,9 +13,6 @@ export default function header() {
         <Title><Highlight>Crypto</Highlight>Dappy</Title>
         <SubTitle>The modern way to <Highlight>learn blockchain</Highlight></SubTitle>
       </Content>
-      <AffiliateLogo
-        onClick={() => navigate('https://onflow.org')}
-        src={`${config.ASSETS_URL}/images/PoweredByFlow_Horizontal.png`} />
     </Wrapper>
   )
 }
@@ -43,6 +40,7 @@ const Title = styled.h1`
   margin: 0;
   margin-top: .5rem;
   line-height: 1;
+  word-break: break-word;
 `
 
 const SubTitle = styled.p`
@@ -52,9 +50,6 @@ const SubTitle = styled.p`
 
 const Highlight = styled.span`
   color: yellow;
+  word-break: break-all;
 `
 
-const AffiliateLogo = styled.img`
-  width: 17rem;
-  cursor: pointer;
-`

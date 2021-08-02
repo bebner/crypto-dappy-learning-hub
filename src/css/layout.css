@@ -1,5 +1,4 @@
 body {
-  margin: 1rem;
   padding: 0;
   background: #DA4453; 
   background: -webkit-linear-gradient(to right, #89216B, #DA4453); 
@@ -9,6 +8,7 @@ body {
   color: white;
   overscroll-behavior-y: none;
   text-align: left;
+  margin: 1rem;
 }
 
 main {
