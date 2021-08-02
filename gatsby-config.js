@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    siteUrl: "https://www.yourdomain.tld",
+    siteUrl: "https://www.cryptodappy.com",
     title: "CryptoDappy Learning Hub",
     menuLinks: [
       {
@@ -59,6 +59,18 @@ module.exports = {
       options: {
         name: `missions`,
         path: `${__dirname}/src/missions`,
+      }
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: 'CryptoDappy Learning Hub',
+        short_name: 'CryptoDappy',
+        start_url: '/',
+        background_color: '#f7f0eb',
+        theme_color: '#a2466c',
+        display: 'standalone',
+        icon: 'src/images/icon.png',
       }
     },
     {
