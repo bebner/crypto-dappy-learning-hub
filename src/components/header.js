@@ -15,9 +15,10 @@ export default function header() {
       </Content>
       <Tag>
         <h3 style={{ margin: 0 }}>Beta</h3>
-        <CTA href="https://forum.onflow.org/c/community-projects/cryptodappy/35"><span style={{ marginRight: ".3rem" }}>👉</span>Leave Feedback</CTA>
+        <CTA href="https://forum.onflow.org/t/community-feedback-for-cryptodappy-beta">
+          <span style={{ marginRight: ".3rem" }}>👉</span>Leave Feedback
+        </CTA>
       </Tag>
-
     </Wrapper>
   )
 }

@@ -12,7 +12,7 @@ CryptoDappy learning hub is the central place for all learning material related 
 ## Contributing
 
 We are actively looking for developers who are wanting to contribute and/or take
-ownership in some way for CryptoDappy and its learning hub. Especially in the following areas contributions are highly sought after:
+ownership in some way for CryptoDappy and its learning hub, especially in the following areas:
 
 * Internationalization of learning hub content (text, videos)
 * Improvement of current design
