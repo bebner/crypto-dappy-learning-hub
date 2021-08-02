@@ -13,6 +13,11 @@ export default function header() {
         <Title><Highlight>Crypto</Highlight>Dappy</Title>
         <SubTitle>The modern way to <Highlight>learn blockchain</Highlight></SubTitle>
       </Content>
+      <Tag>
+        <h3 style={{ margin: 0 }}>Beta</h3>
+        <CTA href="https://forum.onflow.org/c/community-projects/cryptodappy/35"><span style={{ marginRight: ".3rem" }}>👉</span>Leave Feedback</CTA>
+      </Tag>
+
     </Wrapper>
   )
 }
@@ -53,3 +58,12 @@ const Highlight = styled.span`
   word-break: break-all;
 `
 
+const Tag = styled.div`
+  text-align: right;
+`
+
+const CTA = styled.a`
+  font-size: .75rem;
+  cursor: pointer;
+  display: block;
+`

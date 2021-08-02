@@ -4,7 +4,7 @@ module.exports = {
     title: "CryptoDappy Learning Hub",
     menuLinks: [
       {
-        name: 'Overview',
+        name: "What's CryptoDappy?",
         link: '/overview'
       },
       {
@@ -32,21 +32,21 @@ module.exports = {
         link: '/missions/mission-5'
       },
       {
+        name: 'Mission #6',
+        link: '/missions/mission-6'
+      },
+      {
         name: 'Resources',
         link: '/resources'
       },
       {
-        name: 'FAQ',
-        link: '/faq'
-      },
-      {
         name: 'Community',
-        link: 'https://forum.onflow.org/'
+        link: 'https://forum.onflow.org/c/community-projects/cryptodappy/35'
       }
       ,
       {
         name: 'Demo App',
-        link: 'https://ds5644cbkdnqk.cloudfront.net/'
+        link: 'https://demo.cryptodappy.com'
       },
     ]
   },

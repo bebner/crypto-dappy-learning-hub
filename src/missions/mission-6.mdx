@@ -1,0 +1,64 @@
+---
+title: "Mission #6"
+date: "2021-07-23"
+path: '/missions/mission-6'
+---
+import YoutubeEmbed from "../components/youtube.js"
+
+You made it, the Dappy minting is working - and your users are loving it. Everyday, there are thousands
+of new registrations on your site. For some users, however, minting single Dappies is not enough: they
+want Dappy packs! 
+
+---
+
+<img src="https://d1mtab9ltfdpua.cloudfront.net/images/Dappy8.png" width="20%" style="float: left;" />
+
+### Lara Dappy
+
+Product manager
+
+*Hey, let's implement Dappy packs!*
+
+*With Dappy packs, we want to allow users to buy multiple Dappies of one family at once.*
+
+*Could you check how we can achieve that? Thanks!*
+
+---
+
+## The mission brief
+
+This mission is all about implementing a pack functionality for our Dappy minting process.
+
+The starting branch for this mission is *[mission-6](https://github.com/bebner/crypto-dappy/tree/mission-6)*
+
+
+## Dappy packs: contract overview
+
+This short overview explains all of the contract-level data structures and functions
+that are involved in the pack minting process. Understanding the contract side will
+make it easier for you to write the frontend code.
+
+<YoutubeEmbed embedId="ev7LwnH0gl0"/>
+
+## Listing Dappy packs
+
+First things first: We need to know what packs are available. To do that, we'll query 
+our smart contract for any families that Dappies can be minted from.
+
+<YoutubeEmbed embedId="INunRFdPuek"/>
+
+
+## Fetch families of Dappy pack
+
+For every family, there are various Dappy templates to randomly choose the actual pack
+content from. In this video, we'll see how to get information about the templates associated
+with one family.
+
+<YoutubeEmbed embedId="1AuUcBDz-To"/>
+
+## Minting Dappy packs
+
+The final and most complex operation of our application is about to be implemeted: Minting
+multiple Dappies from one family at once by buying a Dappy pack. 
+
+<YoutubeEmbed embedId="8Rav4AmqSKY"/>

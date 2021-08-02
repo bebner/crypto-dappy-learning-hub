@@ -34,7 +34,7 @@ const Layout = ({ children }) => (
         <Footer>
           <FooterContent>Made with ❤️ and ☕ by the <a href="https://forum.onflow.org">Flow community</a></FooterContent>
           <AffiliateLogo
-            onClick={() => navigate('https://onflow.org')}
+            onClick={() => navigate('https://forum.onflow.org/c/community-projects/cryptodappy/35')}
             src={`${config.ASSETS_URL}/images/PoweredByFlow_Horizontal.png`} />
         </Footer>
       </Wrapper>

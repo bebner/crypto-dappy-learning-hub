@@ -10,17 +10,29 @@ const IndexPage = () => {
   return (
     <Layout>
       <main>
-        <h1>CryptoDappy</h1>
-        <h3 style={{ marginTop: 0 }}>Learn blockchain development by building a collectibles game</h3>
+        <h1>Learn blockchain with CryptoDappy</h1>
+        <p>
+          CryptoDappy is a <strong>mission-based online course</strong> directed at developers who want to get started learning
+          blockchain development.
+        </p>
+        <p>
+          CryptoDappy is not an official Flow project, it's a personal project built by Flow's Technical Content Marketing Manager
+          Benjamin Ebner (<a href="https://twitter.com/_bebner">Twitter</a>
+          /<a href="https://medium.com/@ebner.benjamin">Medium</a>
+          /<a href="https://www.youtube.com/channel/UCe5STCXbw9lm5HDad_yh9Ag">Youtube</a>). The official Flow reference dApp is
+          <a href="https://github.com/onflow/kitty-items"> Kitty-Items</a>.
+        </p>
+        <p>Find out more by visiting <a>👉 What's CryptoDappy?</a></p>
         <YoutubeEmbed embedId="QqpkrdnB6Ss" />
-        <h2>Content</h2>
+
         {content.map(c => (
           <>
-            <h3><a onClick={() => navigate(c.href)}>{c.title}</a></h3>
+            <h3 style={{ cursor: "pointer" }}><a onClick={() => navigate(c.href)}>{c.title}</a></h3>
             <p>{c.text}</p>
           </>
         ))
         }
+
       </main>
     </Layout>
   )
