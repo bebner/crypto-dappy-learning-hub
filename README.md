@@ -2,8 +2,8 @@
 
 ![CryptoDappy Cover](https://d1mtab9ltfdpua.cloudfront.net/images/Cover.jpg)
 
-* [Demo application (testnet)](https://ds5644cbkdnqk.cloudfront.net/)
-* [Learning hub (start learning here)](https://d3em6h2gy0mctd.cloudfront.net/)
+* [Demo application (testnet)](https://www.cryptodappy.com)
+* [Learning hub (start learning here)](https://demo.cryptodappy.com)
 
 ## What's CryptoDappy Learning Hub?
 
