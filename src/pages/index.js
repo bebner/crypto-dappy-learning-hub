@@ -23,7 +23,7 @@ const IndexPage = () => {
           <a href="https://github.com/onflow/kitty-items"> Kitty-Items</a>.
         </p>
         <p>Find out more by visiting <a>👉 What's CryptoDappy?</a></p>
-        <YoutubeEmbed embedId="QqpkrdnB6Ss" />
+        <YoutubeEmbed embedId="CW1625hF3CY" />
 
         {content.map(c => (
           <>
