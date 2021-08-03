@@ -32,9 +32,9 @@ const Layout = ({ children }) => (
           </Content>
         </Bottom>
         <Footer>
-          <FooterContent>Made with ❤️ and ☕ by the <a href="https://forum.onflow.org">Flow community</a></FooterContent>
+          <FooterContent>Made with ❤️ and ☕ by the <a href="https://forum.onflow.org/c/community-projects/cryptodappy/35">Flow community</a></FooterContent>
           <AffiliateLogo
-            onClick={() => navigate('https://forum.onflow.org/c/community-projects/cryptodappy/35')}
+            onClick={() => navigate('https://onflow.org/')}
             src={`${config.ASSETS_URL}/images/PoweredByFlow_Horizontal.png`} />
         </Footer>
       </Wrapper>
