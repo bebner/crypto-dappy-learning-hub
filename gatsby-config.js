@@ -80,5 +80,13 @@ module.exports = {
       },
     },
     "gatsby-plugin-mdx",
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: [
+          "G-43X0VSTBPJ"
+        ],
+      },
+    },
   ],
 };
