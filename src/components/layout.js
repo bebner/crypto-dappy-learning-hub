@@ -6,6 +6,7 @@ import "../css/layout.css"
 import "../css/typography.css"
 import Header from "./header"
 import { config } from "../config/config";
+import CookieConsent from "react-cookie-consent";
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -24,6 +25,14 @@ const Layout = ({ children }) => (
     `}
     render={data => (
       <Wrapper>
+        <CookieConsent
+          location="bottom"
+          buttonText="Accept"
+          declineButtonText="Decline"
+          cookieName="gatsby-gdpr-google-analytics"
+        >
+          This site uses cookies to enhance the user experience.
+        </CookieConsent>
         <Header />
         <Bottom>
           <Navbar menuLinks={data.site.siteMetadata.menuLinks} />

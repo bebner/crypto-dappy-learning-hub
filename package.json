@@ -21,6 +21,7 @@
     "@mdx-js/react": "^1.6.22",
     "babel-plugin-styled-components": "^1.13.2",
     "gatsby": "^3.10.2",
+    "gatsby-plugin-gdpr-cookies": "^2.0.6",
     "gatsby-plugin-google-gtag": "^3.10.0",
     "gatsby-plugin-image": "^1.10.1",
     "gatsby-plugin-manifest": "^3.10.0",
@@ -30,6 +31,7 @@
     "gatsby-plugin-styled-components": "^4.10.0",
     "gatsby-source-filesystem": "^3.10.0",
     "react": "^17.0.1",
+    "react-cookie-consent": "^6.2.4",
     "react-dom": "^17.0.1",
     "styled-components": "^5.3.0"
   }

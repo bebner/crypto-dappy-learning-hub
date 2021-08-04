@@ -18,6 +18,8 @@ export default function Navbar({ menuLinks }) {
           </NavLink>
         ))
         }
+        <SmallLink onClick={() => navigate('/imprint')}>Imprint</SmallLink>
+        <SmallLink onClick={() => navigate('/privacy')}>Privacy Policy</SmallLink>
       </Wrapper>
       <MobileWrapper>
         <MenuTrigger onClick={() => setShown(prev => !prev)}>Menu {shown ? <>&#10514;</> : <>&#10515;</>}</MenuTrigger>
@@ -81,4 +83,10 @@ const MenuTrigger = styled.div`
 const MobileMenu = styled.div`
   background: rgba(0,0,0,.2);
   padding: 1rem;
+`
+
+const SmallLink = styled.a`
+  font-size: .75rem;
+  border: none;
+  cursor: pointer;
 `

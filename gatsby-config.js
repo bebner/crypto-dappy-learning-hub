@@ -88,5 +88,14 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: `gatsby-plugin-gdpr-cookies`,
+      options: {
+        googleAnalytics: {
+          trackingId: 'G-43X0VSTBPJ',
+        },
+        environments: ['production']
+      },
+    },
   ],
 };
