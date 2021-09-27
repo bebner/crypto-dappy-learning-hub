@@ -1,4 +1,6 @@
 import React from "react"
+import { MDXProvider } from "@mdx-js/react"
+import MdxLink from "./mdxLink"
 import { StaticQuery, graphql, navigate } from "gatsby";
 import Navbar from "./navbar";
 import styled from "styled-components";
@@ -8,50 +10,56 @@ import Header from "./header"
 import { config } from "../config/config";
 import CookieConsent from "react-cookie-consent";
 
-const Layout = ({ children }) => (
-  <StaticQuery
-    query={graphql`
-      query SiteTitleQuery {
-        site {
-          siteMetadata {
-            title
-            menuLinks {
-              name
-              link
-           }
+const LocaleContext = React.createContext()
+
+const Layout = ({ children, pageContext: { locale } }) => (
+  <LocaleContext.Provider value={{ locale }}>
+    <StaticQuery
+      query={graphql`
+        query SiteTitleQuery {
+          site {
+            siteMetadata {
+              title
+              menuLinks {
+                name
+                link
+             }
+            }
           }
         }
-      }
-    `}
-    render={data => (
-      <Wrapper>
-        <CookieConsent
-          location="bottom"
-          buttonText="Accept"
-          declineButtonText="Decline"
-          cookieName="gatsby-gdpr-google-analytics"
-        >
-          This site uses cookies to enhance the user experience.
-        </CookieConsent>
-        <Header />
-        <Bottom>
-          <Navbar menuLinks={data.site.siteMetadata.menuLinks} />
-          <Content>
-            {children}
-          </Content>
-        </Bottom>
-        <Footer>
-          <FooterContent>Made with ❤️ and ☕ by the <a href="https://forum.onflow.org/c/community-projects/cryptodappy/35">Flow community</a></FooterContent>
-          <AffiliateLogo
-            onClick={() => navigate('https://onflow.org/')}
-            src={`${config.ASSETS_URL}/images/PoweredByFlow_Horizontal.png`} />
-        </Footer>
-      </Wrapper>
-    )}
-  />
+      `}
+      render={data => (
+        <Wrapper>
+          <CookieConsent
+            location="bottom"
+            buttonText="Accept"
+            declineButtonText="Decline"
+            cookieName="gatsby-gdpr-google-analytics"
+          >
+            This site uses cookies to enhance the user experience.
+          </CookieConsent>
+          <Header />
+          <Bottom>
+            <Navbar menuLinks={data.site.siteMetadata.menuLinks} />
+            <MDXProvider components={{ a: MdxLink }}>
+              <Content>
+                {children}
+              </Content>
+            </MDXProvider>
+          </Bottom>
+          <Footer>
+            <FooterContent>Made with ❤️ and ☕ by the <a href="https://forum.onflow.org/c/community-projects/cryptodappy/35">Flow community</a></FooterContent>
+            <AffiliateLogo
+              onClick={() => navigate('https://onflow.org/')}
+              src={`${config.ASSETS_URL}/images/PoweredByFlow_Horizontal.png`} />
+          </Footer>
+        </Wrapper>
+      )}
+    />
+  </LocaleContext.Provider>
 )
 
-export default Layout
+export { Layout, LocaleContext }
 
 const Wrapper = styled.div` 
   display: flex;

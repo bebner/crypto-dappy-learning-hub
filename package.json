@@ -30,6 +30,7 @@
     "gatsby-plugin-sharp": "^3.10.2",
     "gatsby-plugin-styled-components": "^4.10.0",
     "gatsby-source-filesystem": "^3.10.0",
+    "gatsby-transformer-json": "^3.14.0",
     "react": "^17.0.1",
     "react-cookie-consent": "^6.2.4",
     "react-dom": "^17.0.1",

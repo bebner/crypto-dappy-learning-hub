@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { config } from '../config/config'
 import Button from './button'
+import LocalizedLink from "../components/localizedLink"
 
 export default function Navbar({ menuLinks }) {
   const [shown, setShown] = useState(false)
@@ -11,10 +12,19 @@ export default function Navbar({ menuLinks }) {
     <>
       <Wrapper>
         <Button onClick={() => navigate('/contribute')}>Contribute</Button>
+        <LangMenu>
+          <Link to="/" hrefLang="en">
+            English
+          </Link>
+          {` `}/{` `}
+          <Link to="/ja" hrefLang="ja">
+            Japanese
+          </Link>
+        </LangMenu>
         {menuLinks.map((m, i) => (
           <NavLink>
             <Dappy src={`${config.ASSETS_URL}/images/Dappy${i + 1}.png`} />
-            <Link to={m.link}>{m.name}</Link>
+            <LocalizedLink  to={m.link}>{m.name}</LocalizedLink >
           </NavLink>
         ))
         }
@@ -30,7 +40,7 @@ export default function Navbar({ menuLinks }) {
               menuLinks.map((m, i) => (
                 <NavLink>
                   <Dappy src={`${config.ASSETS_URL}/images/Dappy${i + 1}.png`} />
-                  <Link to={m.link}>{m.name}</Link>
+                  <LocalizedLink to={m.link}>{m.name}</LocalizedLink>
                 </NavLink>
               ))
             }
@@ -61,6 +71,12 @@ const MobileWrapper = styled.div`
   @media(min-width: 700px) {
     display: none;
   }
+`
+
+const LangMenu = styled.div`
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
 `
 
 const NavLink = styled.div`
