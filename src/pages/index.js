@@ -6,10 +6,10 @@ import useTranslations from "../components/useTranslations"
 
 
 const IndexPage = () => {
-  const { hello } = useTranslations()
+  const { index_title } = useTranslations()
   return (
     <main>
-      <h1>{hello}</h1>
+      <h1>{index_title}</h1>
       <p>
         CryptoDappy is a <strong>mission-based online course</strong> directed at developers who want to get started learning
         blockchain development.
@@ -24,11 +24,11 @@ const IndexPage = () => {
       <p>Find out more by visiting <a>👉 What's CryptoDappy?</a></p>
       <YoutubeEmbed embedId="CW1625hF3CY" />
 
-      {content.map(c => (
-        <>
+      {content.map((c, i) => (
+        <div key={i.toString()}>
           <h3 style={{ cursor: "pointer" }}><a onClick={() => navigate(c.href)}>{c.title}</a></h3>
           <p>{c.text}</p>
-        </>
+        </div>
       ))
       }
 

@@ -2,8 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 import { navigate } from 'gatsby'; //import navigate from gatsby
 import { config } from '../config/config'
+import useTranslations from "./useTranslations"
 
-export default function header() {
+export default function Header() {
+  const { beta, feedback } = useTranslations()
   return (
     <Wrapper>
       <HeroImage
@@ -14,9 +16,9 @@ export default function header() {
         <SubTitle>The modern way to <Highlight>learn blockchain</Highlight></SubTitle>
       </Content>
       <Tag>
-        <h3 style={{ margin: 0 }}>Beta</h3>
+        <h3 style={{ margin: 0 }}>{beta}</h3>
         <CTA href="https://forum.onflow.org/t/community-feedback-for-cryptodappy-beta">
-          <span style={{ marginRight: ".3rem" }}>👉</span>Leave Feedback
+          <span style={{ marginRight: ".3rem" }}>👉</span>{feedback}
         </CTA>
       </Tag>
     </Wrapper>

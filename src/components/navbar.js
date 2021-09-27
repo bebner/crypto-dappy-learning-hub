@@ -4,14 +4,16 @@ import styled from 'styled-components'
 import { config } from '../config/config'
 import Button from './button'
 import LocalizedLink from "../components/localizedLink"
+import useTranslations from "../components/useTranslations"
 
 export default function Navbar({ menuLinks }) {
   const [shown, setShown] = useState(false)
+  const { contribute } = useTranslations()
 
   return (
     <>
       <Wrapper>
-        <Button onClick={() => navigate('/contribute')}>Contribute</Button>
+        <Button onClick={() => navigate('/contribute')}>{contribute}</Button>
         <LangMenu>
           <Link to="/" hrefLang="en">
             English
@@ -22,7 +24,7 @@ export default function Navbar({ menuLinks }) {
           </Link>
         </LangMenu>
         {menuLinks.map((m, i) => (
-          <NavLink>
+          <NavLink key={i.toString()}>
             <Dappy src={`${config.ASSETS_URL}/images/Dappy${i + 1}.png`} />
             <LocalizedLink  to={m.link}>{m.name}</LocalizedLink >
           </NavLink>
@@ -38,7 +40,7 @@ export default function Navbar({ menuLinks }) {
             <Button onClick={() => navigate('/contribute')}>Contribute</Button>
             {
               menuLinks.map((m, i) => (
-                <NavLink>
+                <NavLink key={i.toString()}>
                   <Dappy src={`${config.ASSETS_URL}/images/Dappy${i + 1}.png`} />
                   <LocalizedLink to={m.link}>{m.name}</LocalizedLink>
                 </NavLink>
