@@ -5,15 +5,18 @@ import { config } from '../config/config'
 import Button from './button'
 import LocalizedLink from "../components/localizedLink"
 import useTranslations from "../components/useTranslations"
+import locales from "../config/i18n"
+import { LocaleContext } from "./layout"
 
 export default function Navbar({ menuLinks }) {
   const [shown, setShown] = useState(false)
   const { contribute } = useTranslations()
+  const { locale } = React.useContext(LocaleContext)
 
   return (
     <>
       <Wrapper>
-        <Button onClick={() => navigate('/contribute')}>{contribute}</Button>
+        <Button onClick={() => localizedNavigate('/contribute', locale)}>{contribute}</Button>
         <LangMenu>
           <Link to="/" hrefLang="en">
             English
@@ -26,18 +29,18 @@ export default function Navbar({ menuLinks }) {
         {menuLinks.map((m, i) => (
           <NavLink key={i.toString()}>
             <Dappy src={`${config.ASSETS_URL}/images/Dappy${i + 1}.png`} />
-            <LocalizedLink  to={m.link}>{m.name}</LocalizedLink >
+            <LocalizedLink to={m.link}>{m.name}</LocalizedLink >
           </NavLink>
         ))
         }
-        <SmallLink onClick={() => navigate('/imprint')}>Imprint</SmallLink>
-        <SmallLink onClick={() => navigate('/privacy')}>Privacy Policy</SmallLink>
+        <SmallLink onClick={() => localizedNavigate('/imprint', locale)}>Imprint</SmallLink>
+        <SmallLink onClick={() => localizedNavigate('/privacy', locale)}>Privacy Policy</SmallLink>
       </Wrapper>
       <MobileWrapper>
         <MenuTrigger onClick={() => setShown(prev => !prev)}>Menu {shown ? <>&#10514;</> : <>&#10515;</>}</MenuTrigger>
         {shown &&
           <MobileMenu>
-            <Button onClick={() => navigate('/contribute')}>Contribute</Button>
+            <Button onClick={() => localizedNavigate('/contribute', locale)}>Contribute</Button>
             {
               menuLinks.map((m, i) => (
                 <NavLink key={i.toString()}>
@@ -53,6 +56,14 @@ export default function Navbar({ menuLinks }) {
   )
 }
 
+const localizedNavigate = (path, locale) => {
+  console.log(path, locale)
+  const localizedPath = locales[locale].default
+  ? path
+  : `/${locales[locale].path}${path}`
+  console.log(localizedPath)
+  navigate(localizedPath)
+}
 
 const Wrapper = styled.div`
   margin-top: 1.5rem;
