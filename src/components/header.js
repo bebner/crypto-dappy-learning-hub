@@ -1,17 +1,20 @@
 import React from 'react'
 import styled from 'styled-components'
-import { navigate } from 'gatsby'; //import navigate from gatsby
+import { LocaleContext } from "./layout"
 import { config } from '../config/config'
 import useTranslations from "./useTranslations"
+import LocalizedNavigate from './localizedNavigate'
 
 export default function Header() {
+  const { locale } = React.useContext(LocaleContext)
   const { beta, feedback } = useTranslations()
+
   return (
     <Wrapper>
       <HeroImage
-        onClick={() => navigate('/')}
+        onClick={() => LocalizedNavigate('/', locale)}
         src={`${config.ASSETS_URL}/images/Dappy1.png`} />
-      <Content onClick={() => navigate('/')}>
+      <Content onClick={() => LocalizedNavigate('/', locale)}>
         <Title><Highlight>Crypto</Highlight>Dappy</Title>
         <SubTitle>The modern way to <Highlight>learn blockchain</Highlight></SubTitle>
       </Content>

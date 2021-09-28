@@ -2,18 +2,18 @@ import { Link, navigate } from 'gatsby'
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { config } from '../config/config'
-import locales from "../config/i18n"
 import Button from './button'
 import { LocaleContext } from "./layout"
 import useTranslations from "./useTranslations"
 import LocalizedLink from './localizedLink'
+import LocalizedNavigate from './localizedNavigate'
 import Select from 'react-select';
 import ReactCountryFlag from "react-country-flag"
 
 export default function Navbar({ menuLinks }) {
   const [shown, setShown] = useState(false)
-  const { contribute } = useTranslations()
   const { locale } = React.useContext(LocaleContext)
+  const { contribute } = useTranslations()
 
   const langMenuStyles = {
     container: (provided, state) => ({
@@ -35,7 +35,7 @@ export default function Navbar({ menuLinks }) {
   return (
     <>
       <Wrapper>
-        <Button onClick={() => localizedNavigate('/contribute', locale)}>{contribute}</Button>
+        <Button onClick={() => LocalizedNavigate('/contribute', locale)}>{contribute}</Button>
         <Select
           placeholder='language'
           defaultValue={options[defaultIdx]}
@@ -50,14 +50,14 @@ export default function Navbar({ menuLinks }) {
           </NavLink>
         ))
         }
-        <SmallLink onClick={() => localizedNavigate('/imprint', locale)}>Imprint</SmallLink>
-        <SmallLink onClick={() => localizedNavigate('/privacy', locale)}>Privacy Policy</SmallLink>
+        <SmallLink onClick={() => LocalizedNavigate('/imprint', locale)}>Imprint</SmallLink>
+        <SmallLink onClick={() => LocalizedNavigate('/privacy', locale)}>Privacy Policy</SmallLink>
       </Wrapper>
       <MobileWrapper>
         <MenuTrigger onClick={() => setShown(prev => !prev)}>Menu {shown ? <>&#10514;</> : <>&#10515;</>}</MenuTrigger>
         {shown &&
           <MobileMenu>
-            <Button onClick={() => localizedNavigate('/contribute', locale)}>Contribute</Button>
+            <Button onClick={() => LocalizedNavigate('/contribute', locale)}>Contribute</Button>
             <Select
               placeholder='language'
               defaultValue={options[defaultIdx]}
@@ -78,13 +78,6 @@ export default function Navbar({ menuLinks }) {
       </MobileWrapper>
     </>
   )
-}
-
-const localizedNavigate = (path, locale) => {
-  const localizedPath = (locales[locale].default || path.indexOf('//') !== -1)
-  ? path
-  : `/${locales[locale].path}${path}`
-  navigate(localizedPath)
 }
 
 const Wrapper = styled.div`
