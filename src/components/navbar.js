@@ -7,25 +7,42 @@ import Button from './button'
 import { LocaleContext } from "./layout"
 import useTranslations from "./useTranslations"
 import LocalizedLink from './localizedLink'
+import Select from 'react-select';
+import ReactCountryFlag from "react-country-flag"
 
 export default function Navbar({ menuLinks }) {
   const [shown, setShown] = useState(false)
   const { contribute } = useTranslations()
   const { locale } = React.useContext(LocaleContext)
 
+  const langMenuStyles = {
+    container: (provided, state) => ({
+      ...provided,
+      marginBottom: '1rem',
+      alignItems: 'center',
+    }),
+    option: (provided, state) => ({
+      ...provided,
+      color: 'black',
+    }),
+  }
+  const options = [
+    { value: 'en', path: '/', label: <><ReactCountryFlag countryCode="GB" svg style={{width: '1.5rem', height: '1.5rem', verticalAlign: 'bottom'}} /> English</> },
+    { value: 'ja', path: '/ja', label: <><ReactCountryFlag countryCode="JP" svg style={{width: '1.5rem', height: '1.5rem', verticalAlign: 'bottom'}} /> 日本語</> },
+  ];
+  const defaultIdx = options.findIndex(e => e.value === locale) || 0
+
   return (
     <>
       <Wrapper>
         <Button onClick={() => localizedNavigate('/contribute', locale)}>{contribute}</Button>
-        <LangMenu>
-          <Link to="/" hrefLang="en">
-            English
-          </Link>
-          {` `}/{` `}
-          <Link to="/ja" hrefLang="ja">
-            Japanese
-          </Link>
-        </LangMenu>
+        <Select
+          placeholder='language'
+          defaultValue={options[defaultIdx]}
+          onChange={(option) => navigate(`${option.path}`)}
+          options={options}
+          styles={langMenuStyles}
+        />
         {menuLinks.map((m, i) => (
           <NavLink key={i.toString()}>
             <Dappy src={`${config.ASSETS_URL}/images/Dappy${i + 1}.png`} />
@@ -41,6 +58,13 @@ export default function Navbar({ menuLinks }) {
         {shown &&
           <MobileMenu>
             <Button onClick={() => localizedNavigate('/contribute', locale)}>Contribute</Button>
+            <Select
+              placeholder='language'
+              defaultValue={options[defaultIdx]}
+              onChange={(option) => navigate(`${option.path}`)}
+              options={options}
+              styles={langMenuStyles}
+            />
             {
               menuLinks.map((m, i) => (
                 <NavLink key={i.toString()}>
@@ -82,12 +106,6 @@ const MobileWrapper = styled.div`
   @media(min-width: 700px) {
     display: none;
   }
-`
-
-const LangMenu = styled.div`
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
 `
 
 const NavLink = styled.div`
