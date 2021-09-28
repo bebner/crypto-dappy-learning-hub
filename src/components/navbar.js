@@ -2,11 +2,11 @@ import { Link, navigate } from 'gatsby'
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { config } from '../config/config'
-import Button from './button'
-import LocalizedLink from "../components/localizedLink"
-import useTranslations from "../components/useTranslations"
 import locales from "../config/i18n"
+import Button from './button'
 import { LocaleContext } from "./layout"
+import useTranslations from "./useTranslations"
+import LocalizedLink from './localizedLink'
 
 export default function Navbar({ menuLinks }) {
   const [shown, setShown] = useState(false)
@@ -57,11 +57,9 @@ export default function Navbar({ menuLinks }) {
 }
 
 const localizedNavigate = (path, locale) => {
-  console.log(path, locale)
-  const localizedPath = locales[locale].default
+  const localizedPath = (locales[locale].default || path.indexOf('//') !== -1)
   ? path
   : `/${locales[locale].path}${path}`
-  console.log(localizedPath)
   navigate(localizedPath)
 }
 

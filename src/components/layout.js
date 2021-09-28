@@ -1,6 +1,6 @@
 import React from "react"
 import { MDXProvider } from "@mdx-js/react"
-import MdxLink from "./mdxLink"
+import LocalizedLink from "./localizedLink"
 import { StaticQuery, graphql, navigate } from "gatsby";
 import Navbar from "./navbar";
 import styled from "styled-components";
@@ -41,7 +41,7 @@ const Layout = ({ children, pageContext: { locale } }) => (
           <Header />
           <Bottom>
             <Navbar menuLinks={data.site.siteMetadata.menuLinks} />
-            <MDXProvider components={{ a: MdxLink }}>
+            <MDXProvider components={{ a: LocalizedLink }}>
               <Content>
                 {children}
               </Content>

@@ -1,9 +1,8 @@
-import { navigate } from "gatsby"
 import * as React from "react"
 import YoutubeEmbed from "../components/youtube"
 import { content } from "../config/index-content"
 import useTranslations from "../components/useTranslations"
-
+import LocalizedLink from '../components/localizedLink'
 
 const IndexPage = () => {
   const { index_title } = useTranslations()
@@ -25,10 +24,10 @@ const IndexPage = () => {
       <YoutubeEmbed embedId="CW1625hF3CY" />
 
       {content.map((c, i) => (
-        <div key={i.toString()}>
-          <h3 style={{ cursor: "pointer" }}><a onClick={() => navigate(c.href)}>{c.title}</a></h3>
+        <span key={i.toString()}>
+          <h3 style={{ cursor: "pointer" }}><LocalizedLink to={c.href}>{c.title}</LocalizedLink></h3>
           <p>{c.text}</p>
-        </div>
+        </span>
       ))
       }
 
