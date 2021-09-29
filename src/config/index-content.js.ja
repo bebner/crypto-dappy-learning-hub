@@ -1,37 +1,37 @@
 export const content = [
   {
-    title: "🚀 Onboarding: Getting started",
-    text: "Getting to know the starter application and introducing general concepts.",
+    title: "🚀 オンボーディング: はじめに",
+    text: "スターターアプリケーションを知り、一般的なコンセプトを紹介します。",
     href: "/missions/mission-0"
   },
   {
-    title: "🔐 Mission #1: Authentication",
-    text: "Adding blockchain authentication in a few lines with the Flow Client Library (FCL).",
+    title: "🔐 ミッション #1: 認証",
+    text: "Flow Client Library (FCL) を使って数行でブロックチェーン認証を追加します。",
     href: "/missions/mission-1"
   },
   {
-    title: "📜 Mission #2: Scripts",
-    text: "Query the blockchain by using Cadence scripts.",
+    title: "📜 ミッション #2: スクリプト",
+    text: "Cadence のスクリプトを使って、ブロックチェーンに問い合わせます。",
     href: "/missions/mission-2"
   },
   {
-    title: "✉️ Mission #3: Transactions & Resources",
-    text: "Write your first transaction to create a collection resource for the Dappy NFTs.",
+    title: "✉️ ミッション #3: トランザクションとリソース",
+    text: "Dappy NFT のコレクションリソースを作成するための最初のトランザクションを書きます。",
     href: "/missions/mission-3"
   },
   {
-    title: "💰 Mission #4: FUSD and Fungible Tokens",
-    text: "Integrate payments with FUSD and grasp the basics of fungible tokens on Flow.",
+    title: "💰 ミッション #4: FUSD と Fungible Tokens",
+    text: "FUSD 決済をインテグレーションし、Flow における Fungible Tokens の基本を把握します。",
     href: "/missions/mission-4"
   },
   {
-    title: "💎  Mission #5: Minting",
-    text: "Mint your first Dappy NFT and add it tro your collection.",
+    title: "💎  ミッション #5: NFT の mint",
+    text: "あなたの初めての Dappy NFT を mint して、コレクションに加えましょう。",
     href: "/missions/mission-5"
   },
   {
-    title: "📦  Mission #6: Packs",
-    text: "Implement a mechanism for minting multiple Dappies at once with Dappy packs.",
+    title: "📦  ミッション #6: パック",
+    text: "複数の Dappy を一度に mint するための仕組みを Dappy パックに実装します。",
     href: "/missions/mission-6"
   }
 ]

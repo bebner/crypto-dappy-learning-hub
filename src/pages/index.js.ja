@@ -10,17 +10,16 @@ const IndexPage = () => {
     <main>
       <h1>{index_title}</h1>
       <p>
-        CryptoDappy is a <strong>mission-based online course</strong> directed at developers who want to get started learning
-        blockchain development.
+        CryptoDappy は、ブロックチェーン開発の学習を始めたい開発者を対象とした <strong>ミッションベースのオンラインコース</strong> です。
       </p>
       <p>
-        CryptoDappy is not an official Flow project, it's a personal project built by Flow's Technical Content Marketing Manager
+        CryptoDappyは、Flow の公式プロジェクトではなく、Flow のテクニカル・コンテンツ・マーケティング・マネージャーである
         Benjamin Ebner (<a href="https://twitter.com/_bebner">Twitter</a>
         /<a href="https://medium.com/@ebner.benjamin">Medium</a>
-        /<a href="https://www.youtube.com/channel/UCe5STCXbw9lm5HDad_yh9Ag">Youtube</a>). The official Flow reference dApp is
-        <a href="https://github.com/onflow/kitty-items"> Kitty-Items</a>.
+        /<a href="https://www.youtube.com/channel/UCe5STCXbw9lm5HDad_yh9Ag">Youtube</a>) が作った個人的なプロジェクトです。
+        Flow の公式のリファレンス dApp は <a href="https://github.com/onflow/kitty-items"> Kitty-Items</a> です。
       </p>
-      <p>Find out more by visiting <a>👉 What's CryptoDappy?</a></p>
+      <p>詳しくはこちらをご覧ください <a>👉 CryptoDappyとは？</a></p>
       <YoutubeEmbed embedId="CW1625hF3CY" />
 
       {content.map((c, i) => (
