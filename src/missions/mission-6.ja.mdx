@@ -5,11 +5,9 @@ path: '/missions/mission-6'
 ---
 import YoutubeEmbed from "../components/youtube.js"
 
-日本語用
-
-You made it, the Dappy minting is working - and your users are loving it. Everyday, there are thousands
-of new registrations on your site. For some users, however, minting single Dappies is not enough: they
-want Dappy packs! 
+やりました！Dappy の mint が成功しました！ユーザーにも好評です。毎日、何千人ものユーザー登録が行われています。
+しかし、ユーザーの中には、1つの Dappy だけでは満足できず、Dappy パックを求める人もいます。
+Dappy パックが欲しい！
 
 ---
 
@@ -17,50 +15,48 @@ want Dappy packs!
 
 ### Lara Dappy
 
-Product manager
+プロダクト・マネージャー
 
-*Hey, let's implement Dappy packs!*
+*やあ！Dappy パックを実装しましょう！*
 
-*With Dappy packs, we want to allow users to buy multiple Dappies of one family at once.*
+*Dappy パックでは、1つのファミリーの複数の Dappy を一度に購入できるようにしたいと考えています。*
 
-*Could you check how we can achieve that? Thanks!*
+*どうすれば実現できるか確認してもらえますか？ありがとうございます！*
 
 ---
 
-## The mission brief
+## ミッション概要
 
-This mission is all about implementing a pack functionality for our Dappy minting process.
+今回のミッションは、Dappyの mint プロセスに、パックの機能を実装することです。
 
-The starting branch for this mission is *[mission-6](https://github.com/bebner/crypto-dappy/tree/mission-6)*
+このミッションの開始ブランチは *[mission-6](https://github.com/bebner/crypto-dappy/tree/mission-6)* です。
 
 
-## Dappy packs: contract overview
+## Dappy パック： コントラクトの概要
 
-This short overview explains all of the contract-level data structures and functions
-that are involved in the pack minting process. Understanding the contract side will
-make it easier for you to write the frontend code.
+この短い概要では、パックの mint に関わるコントラクトレベルのデータ構造と機能をすべて説明します。
+コントラクト側を理解することで フロントエンドのコードを書くのが楽になるでしょう。
 
 <YoutubeEmbed embedId="ev7LwnH0gl0"/>
 
-## Listing Dappy packs
+## Dappy パックのリスト表示
 
-First things first: We need to know what packs are available. To do that, we'll query 
-our smart contract for any families that Dappies can be minted from.
+まず最初にすべきこと：どのようなパックが購入可能かを知る必要があります。
+そのためには、Dappy を mint 可能なファミリーを、スマートコントラクトに問い合わせます。
 
 <YoutubeEmbed embedId="INunRFdPuek"/>
 
 
-## Fetch families of Dappy pack
+## Dappy パックのファミリーを取得する
 
-For every family, there are various Dappy templates to randomly choose the actual pack
-content from. In this video, we'll see how to get information about the templates associated
-with one family.
+ファミリーごとに、様々な Dappy テンプレートが用意されており、そこから実際のパック内容をランダムに選択します。
+この動画では、あるファミリーに関連するテンプレートの情報を取得する方法をご紹介します。
 
 <YoutubeEmbed embedId="1AuUcBDz-To"/>
 
-## Minting Dappy packs
+## Dappy パックの mint
 
-The final and most complex operation of our application is about to be implemeted: Minting
-multiple Dappies from one family at once by buying a Dappy pack. 
+このアプリケーションの最後の、そして最も複雑な操作が実装されようとしています。
+Dappy パックが購入されると、1つのファミリーから複数の Dappy を一度に mint します。
 
 <YoutubeEmbed embedId="8Rav4AmqSKY"/>
