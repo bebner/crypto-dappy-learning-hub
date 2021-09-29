@@ -1,6 +1,25 @@
 {
+    "title": "<Highlight>Crypto</Highlight>Dappy",
+    "subtitle": "The modern way to <Highlight>learn blockchain</Highlight>",
     "beta": "Beta",
     "feedback": "Leave Feedback",
     "contribute": "Contribute",
-    "index_title": "Learn blockchain with CryptoDappy"
+    "index_title": "Learn blockchain with CryptoDappy",
+    "index_p1": "CryptoDappy is a <strong>mission-based online course</strong> directed at developers who want to get started learning blockchain development.",
+    "index_p2": "CryptoDappy is not an official Flow project, it's a personal project built by Flow's Technical Content Marketing Manager Benjamin Ebner (<a href='https://twitter.com/_bebner'>Twitter</a> /<a href='https://medium.com/@ebner.benjamin'>Medium</a> /<a href='https://www.youtube.com/channel/UCe5STCXbw9lm5HDad_yh9Ag'>Youtube</a>). The official Flow reference dApp is <a href='https://github.com/onflow/kitty-items'> Kitty-Items</a>.",
+    "index_p3": "Find out more by visiting <a>👉 What's CryptoDappy?</a>",
+    "onboarding_title": "🚀 Onboarding: Getting started",
+    "onboarding_text": "Getting to know the starter application and introducing general concepts.",
+    "mission1_title": "🔐 Mission #1: Authentication",
+    "mission1_text": "Adding blockchain authentication in a few lines with the Flow Client Library (FCL).",
+    "mission2_title": "📜 Mission #2: Scripts",
+    "mission2_text": "Query the blockchain by using Cadence scripts.",
+    "mission3_title": "✉️ Mission #3: Transactions & Resources",
+    "mission3_text": "Write your first transaction to create a collection resource for the Dappy NFTs.",
+    "mission4_title": "💰 Mission #4: FUSD and Fungible Tokens",
+    "mission4_text": "Integrate payments with FUSD and grasp the basics of fungible tokens on Flow.",
+    "mission5_title": "💎  Mission #5: Minting",
+    "mission5_text": "Mint your first Dappy NFT and add it tro your collection.",
+    "mission6_title": "📦  Mission #6: Packs",
+    "mission6_text": "Implement a mechanism for minting multiple Dappies at once with Dappy packs."
 }
