@@ -1,6 +1,25 @@
 {
+    "title": "<Highlight>Crypto</Highlight>Dappy",
+    "subtitle": "モダンな方法で<Highlight>ブロックチェーンを学ぼう</Highlight>",
     "beta": "ベータ版",
     "feedback": "フィードバック",
     "contribute": "貢献する",
-    "index_title": "CryptoDappyでブロックチェーンを学ぼう"
+    "index_title": "CryptoDappyでブロックチェーンを学ぼう",
+    "index_p1": "CryptoDappy は、ブロックチェーン開発の学習を始めたい開発者を対象とした <strong>ミッションベースのオンラインコース</strong> です。",
+    "index_p2": "CryptoDappyは、Flow の公式プロジェクトではなく、Flow のテクニカル・コンテンツ・マーケティング・マネージャーである Benjamin Ebner (<a href='https://twitter.com/_bebner'>Twitter</a> /<a href='https://medium.com/@ebner.benjamin'>Medium</a> /<a href='https://www.youtube.com/channel/UCe5STCXbw9lm5HDad_yh9Ag'>Youtube</a>) が作った個人的なプロジェクトです。 Flow の公式のリファレンス dApp は <a href='https://github.com/onflow/kitty-items'> Kitty-Items</a> です。",
+    "index_p3": "詳しくはこちらをご覧ください <a>👉 CryptoDappyとは？</a>",
+    "onboarding_title": "🚀 オンボーディング: はじめに",
+    "onboarding_text": "スターターアプリケーションを知り、一般的なコンセプトを紹介します。",
+    "mission1_title": "🔐 ミッション #1: 認証",
+    "mission1_text": "Flow Client Library (FCL) を使って数行でブロックチェーン認証を追加します。",
+    "mission2_title": "📜 ミッション #2: スクリプト",
+    "mission2_text": "Cadence のスクリプトを使って、ブロックチェーンに問い合わせます。",
+    "mission3_title": "✉️ ミッション #3: トランザクションとリソース",
+    "mission3_text": "Dappy NFT のコレクションリソースを作成するための最初のトランザクションを書きます。",
+    "mission4_title": "💰 ミッション #4: FUSD と Fungible Tokens",
+    "mission4_text": "FUSD 決済をインテグレーションし、Flow における Fungible Tokens の基本を把握します。",
+    "mission5_title": "💎 ミッション #5: NFT の mint",
+    "mission5_text": "あなたの初めての Dappy NFT を mint して、コレクションに加えましょう。",
+    "mission6_title": "📦 ミッション #6: パック",
+    "mission6_text": "複数の Dappy を一度に mint するための仕組みを Dappy パックに実装します。"
 }

@@ -31,10 +31,29 @@ const query = graphql`
         node {
           name
           translations: childTranslationsJson {
+            title
+            subtitle
             beta
             feedback
             contribute
             index_title
+            index_p1
+            index_p2
+            index_p3
+            onboarding_title
+            onboarding_text
+            mission1_title
+            mission1_text
+            mission2_title
+            mission2_text
+            mission3_title
+            mission3_text
+            mission4_title
+            mission4_text
+            mission5_title
+            mission5_text
+            mission6_title
+            mission6_text
           }
         }
       }

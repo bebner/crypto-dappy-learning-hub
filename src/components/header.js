@@ -4,10 +4,14 @@ import { LocaleContext } from "./layout"
 import { config } from '../config/config'
 import useTranslations from "./useTranslations"
 import LocalizedNavigate from './localizedNavigate'
+import parse, { domToReact } from 'html-react-parser';
 
 export default function Header() {
   const { locale } = React.useContext(LocaleContext)
-  const { beta, feedback } = useTranslations()
+  const { title, subtitle, beta, feedback } = useTranslations()
+  const replace = (node) => {
+    if(node.type ==="tag" && node.name === "highlight"){ return <Highlight>{ domToReact(node.children) }</Highlight> }
+  }
 
   return (
     <Wrapper>
@@ -15,8 +19,8 @@ export default function Header() {
         onClick={() => LocalizedNavigate('/', locale)}
         src={`${config.ASSETS_URL}/images/Dappy1.png`} />
       <Content onClick={() => LocalizedNavigate('/', locale)}>
-        <Title><Highlight>Crypto</Highlight>Dappy</Title>
-        <SubTitle>The modern way to <Highlight>learn blockchain</Highlight></SubTitle>
+        <Title>{parse(title, { replace })}</Title>
+        <SubTitle>{parse(subtitle, { replace })}</SubTitle>
       </Content>
       <Tag>
         <h3 style={{ margin: 0 }}>{beta}</h3>
