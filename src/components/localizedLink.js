@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import { LocaleContext } from "./layout"
-import locales from "../config/i18n"
+import i18n from "../config/i18n"
 
 const isHash = str => /^#/.test(str)
 const isInternal = to => /^\/(?!\/)/.test(to)
@@ -11,9 +11,9 @@ const localizedPath = (path, locale) => {
   // If it's another language, add the "path"
   // However, if the homepage/index page is linked don't add the "to"
   // Because otherwise this would add a trailing slash
-  return locales[locale].default
+  return locale === i18n.defaultLang
   ? path
-  : `/${locales[locale].path}${isIndex(path) ? `` : `${path}`}`
+  : `/${i18n.langs[locale].path}${isIndex(path) ? `` : `${path}`}`
 }
 
 // Use the globally available context to choose the right path

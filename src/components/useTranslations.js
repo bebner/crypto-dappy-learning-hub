@@ -1,25 +1,38 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { LocaleContext } from "./layout"
+import i18n from "../config/i18n"
 
 const useTranslations = () => {
   // Grab the locale (passed through context) from the Context Provider
   const { locale } = React.useContext(LocaleContext)
-  // Query the JSON files in <rootDir>/i18n/translations
+  // Query the JSON files in <rootDir>/src/config/translations
   const { rawData } = useStaticQuery(query)
 
   // Simplify the response from GraphQL
-  const simplified = rawData.edges.map(item => {
+  const translationSet = rawData.edges.map(item => {
     return {
       name: item.node.name,
       translations: item.node.translations,
     }
   })
 
-  // Only return translations for the current locale
-  const { translations } = simplified.filter(lang => lang.name === locale)[0]
+  const translations = mergeTrans(fetchTrans(locale, translationSet), fetchTrans(i18n.defaultLang, translationSet))
 
   return translations
+}
+
+const fetchTrans = (locale, translationSet) => {
+  const { translations } = translationSet.filter(lang => lang.name === locale)[0]
+  return translations
+}
+
+const mergeTrans = (localeTrans, defaultTrans) => {
+  const mergedTrans = {}
+  Object.keys(defaultTrans).forEach(key => {
+    mergedTrans[key] = (typeof localeTrans[key] === 'string') ? localeTrans[key] : defaultTrans[key]
+  })
+  return mergedTrans
 }
 
 export default useTranslations

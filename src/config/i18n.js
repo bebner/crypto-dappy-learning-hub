@@ -1,8 +1,7 @@
-// Only one item MUST have the "default: true" key
-
 module.exports = {
+  defaultLang: 'en',
+  langs:{
     en: {
-      default: true,
       path: `en`,
       locale: `en-US`,
       dateFormat: `DD/MM/YYYY`,
@@ -21,3 +20,4 @@ module.exports = {
       defaultDescription: `Gatsby example site using MDX and dependency-free i18n`,
     },
   }
+}

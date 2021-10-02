@@ -1,24 +1,23 @@
 const path = require(`path`)
-const locales = require(`./src/config/i18n`)
+const i18n = require(`./src/config/i18n`)
 const {
   localizedSlug,
-  findKey,
   removeTrailingSlash,
 } = require(`./src/utils/gatsby-node-helpers`)
 
 exports.onCreatePage = ({ page, actions }) => {
   const { createPage, deletePage } = actions
+  const langs = i18n.langs
 
   // First delete the incoming page that was automatically created by Gatsby
   // So everything in src/pages/
   deletePage(page)
 
-  // Grab the keys ('en' & 'de') of locales and map over them
-  Object.keys(locales).map(lang => {
-    // Use the values defined in "locales" to construct the path
-    const localizedPath = locales[lang].default
+  Object.keys(langs).map(lang => {
+    // Use the values defined in "langs" to construct the path
+    const localizedPath = (lang === i18n.defaultLang)
       ? page.path
-      : `${locales[lang].path}${page.path}`
+      : `${langs[lang].path}${page.path}`
 
     return createPage({
       // Pass on everything from the original page
@@ -32,7 +31,7 @@ exports.onCreatePage = ({ page, actions }) => {
       context: {
         ...page.context,
         locale: lang,
-        dateFormat: locales[lang].dateFormat,
+        dateFormat: langs[lang].dateFormat,
       },
     })
   })
@@ -54,14 +53,11 @@ exports.onCreateNode = ({ node, actions }) => {
     // (In this case "en")
     const isDefault = (name.split(`.`).length === 1)
 
-    // Find the key that has "default: true" set (in this case it returns "en")
-    const defaultKey = findKey(locales, o => o.default === true)
-
     // Files are defined with "name-with-dashes.lang.mdx"
     // name returns "name-with-dashes.lang"
     // So grab the lang from that string
     // If it's the default language, pass the locale for that
-    const lang = isDefault ? defaultKey : name.split(`.`)[1]
+    const lang = isDefault ? i18n.defaultLang : name.split(`.`)[1]
 
     createNodeField({ node, name: `locale`, value: lang })
     createNodeField({ node, name: `isDefault`, value: isDefault })
