@@ -10,14 +10,14 @@ import LangSelect from './langSelect'
 
 export default function Navbar({ menuLinks }) {
   const [shown, setShown] = useState(false)
-  const { locale } = React.useContext(LocaleContext)
+  const { lang } = React.useContext(LocaleContext)
   const { contribute } = useTranslations()
 
   return (
     <>
       <Wrapper>
-        <Button onClick={() => LocalizedNavigate('/contribute', locale)}>{contribute}</Button>
-        <LangSelect locale={locale}/>
+        <Button onClick={() => LocalizedNavigate('/contribute', lang)}>{contribute}</Button>
+        <LangSelect lang={lang}/>
         {menuLinks.map((m, i) => (
           <NavLink key={i.toString()}>
             <Dappy src={`${config.ASSETS_URL}/images/Dappy${i + 1}.png`} />
@@ -25,15 +25,15 @@ export default function Navbar({ menuLinks }) {
           </NavLink>
         ))
         }
-        <SmallLink onClick={() => LocalizedNavigate('/imprint', locale)}>Imprint</SmallLink>
-        <SmallLink onClick={() => LocalizedNavigate('/privacy', locale)}>Privacy Policy</SmallLink>
+        <SmallLink onClick={() => LocalizedNavigate('/imprint', lang)}>Imprint</SmallLink>
+        <SmallLink onClick={() => LocalizedNavigate('/privacy', lang)}>Privacy Policy</SmallLink>
       </Wrapper>
       <MobileWrapper>
         <MenuTrigger onClick={() => setShown(prev => !prev)}>Menu {shown ? <>&#10514;</> : <>&#10515;</>}</MenuTrigger>
         {shown &&
           <MobileMenu>
-            <Button onClick={() => LocalizedNavigate('/contribute', locale)}>Contribute</Button>
-            <LangSelect locale={locale} />
+            <Button onClick={() => LocalizedNavigate('/contribute', lang)}>Contribute</Button>
+            <LangSelect lang={lang} />
             {
               menuLinks.map((m, i) => (
                 <NavLink key={i.toString()}>

@@ -5,7 +5,7 @@ import i18n from "../config/i18n"
 
 const useTranslations = () => {
   // Grab the locale (passed through context) from the Context Provider
-  const { locale } = React.useContext(LocaleContext)
+  const { lang } = React.useContext(LocaleContext)
   // Query the JSON files in <rootDir>/src/config/translations
   const { rawData } = useStaticQuery(query)
 
@@ -17,13 +17,13 @@ const useTranslations = () => {
     }
   })
 
-  const translations = mergeTrans(fetchTrans(locale, translationSet), fetchTrans(i18n.defaultLang, translationSet))
+  const translations = mergeTrans(fetchTrans(lang, translationSet), fetchTrans(i18n.defaultLang, translationSet))
 
   return translations
 }
 
-const fetchTrans = (locale, translationSet) => {
-  const { translations } = translationSet.filter(lang => lang.name === locale)[0]
+const fetchTrans = (lang, translationSet) => {
+  const { translations } = translationSet.filter(trans => trans.name === lang)[0]
   return translations
 }
 

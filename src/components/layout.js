@@ -12,8 +12,8 @@ import CookieConsent from "react-cookie-consent";
 
 const LocaleContext = React.createContext()
 
-const Layout = ({ children, pageContext: { locale } }) => (
-  <LocaleContext.Provider value={{ locale }}>
+const Layout = ({ children, pageContext: { lang } }) => (
+  <LocaleContext.Provider value={{ lang }}>
     <StaticQuery
       query={graphql`
         query SiteTitleQuery {
