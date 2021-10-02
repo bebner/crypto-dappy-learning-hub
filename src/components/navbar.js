@@ -1,4 +1,3 @@
-import { Link, navigate } from 'gatsby'
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { config } from '../config/config'
@@ -7,42 +6,18 @@ import { LocaleContext } from "./layout"
 import useTranslations from "./useTranslations"
 import LocalizedLink from './localizedLink'
 import LocalizedNavigate from './localizedNavigate'
-import Select from 'react-select';
-import ReactCountryFlag from "react-country-flag"
+import LangSelect from './langSelect'
 
 export default function Navbar({ menuLinks }) {
   const [shown, setShown] = useState(false)
   const { locale } = React.useContext(LocaleContext)
   const { contribute } = useTranslations()
 
-  const langMenuStyles = {
-    container: (provided, state) => ({
-      ...provided,
-      marginBottom: '1rem',
-      alignItems: 'center',
-    }),
-    option: (provided, state) => ({
-      ...provided,
-      color: 'black',
-    }),
-  }
-  const options = [
-    { value: 'en', path: '/', label: <><ReactCountryFlag countryCode="GB" svg style={{width: '1.5rem', height: '1.5rem', verticalAlign: 'bottom'}} /> English</> },
-    { value: 'ja', path: '/ja', label: <><ReactCountryFlag countryCode="JP" svg style={{width: '1.5rem', height: '1.5rem', verticalAlign: 'bottom'}} /> 日本語</> },
-  ];
-  const defaultIdx = options.findIndex(e => e.value === locale) || 0
-
   return (
     <>
       <Wrapper>
         <Button onClick={() => LocalizedNavigate('/contribute', locale)}>{contribute}</Button>
-        <Select
-          placeholder='language'
-          defaultValue={options[defaultIdx]}
-          onChange={(option) => navigate(`${option.path}`)}
-          options={options}
-          styles={langMenuStyles}
-        />
+        <LangSelect locale={locale}/>
         {menuLinks.map((m, i) => (
           <NavLink key={i.toString()}>
             <Dappy src={`${config.ASSETS_URL}/images/Dappy${i + 1}.png`} />
@@ -58,13 +33,7 @@ export default function Navbar({ menuLinks }) {
         {shown &&
           <MobileMenu>
             <Button onClick={() => LocalizedNavigate('/contribute', locale)}>Contribute</Button>
-            <Select
-              placeholder='language'
-              defaultValue={options[defaultIdx]}
-              onChange={(option) => navigate(`${option.path}`)}
-              options={options}
-              styles={langMenuStyles}
-            />
+            <LangSelect locale={locale} />
             {
               menuLinks.map((m, i) => (
                 <NavLink key={i.toString()}>
