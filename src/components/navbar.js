@@ -1,4 +1,3 @@
-import { Link, navigate } from 'gatsby'
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { config } from '../config/config'
@@ -7,42 +6,18 @@ import { LocaleContext } from "./layout"
 import useTranslations from "./useTranslations"
 import LocalizedLink from './localizedLink'
 import LocalizedNavigate from './localizedNavigate'
-import Select from 'react-select';
-import ReactCountryFlag from "react-country-flag"
+import LangSelect from './langSelect'
 
 export default function Navbar({ menuLinks }) {
   const [shown, setShown] = useState(false)
-  const { locale } = React.useContext(LocaleContext)
+  const { lang } = React.useContext(LocaleContext)
   const { contribute } = useTranslations()
-
-  const langMenuStyles = {
-    container: (provided, state) => ({
-      ...provided,
-      marginBottom: '1rem',
-      alignItems: 'center',
-    }),
-    option: (provided, state) => ({
-      ...provided,
-      color: 'black',
-    }),
-  }
-  const options = [
-    { value: 'en', path: '/', label: <><ReactCountryFlag countryCode="GB" svg style={{width: '1.5rem', height: '1.5rem', verticalAlign: 'bottom'}} /> English</> },
-    { value: 'ja', path: '/ja', label: <><ReactCountryFlag countryCode="JP" svg style={{width: '1.5rem', height: '1.5rem', verticalAlign: 'bottom'}} /> 日本語</> },
-  ];
-  const defaultIdx = options.findIndex(e => e.value === locale) || 0
 
   return (
     <>
       <Wrapper>
-        <Button onClick={() => LocalizedNavigate('/contribute', locale)}>{contribute}</Button>
-        <Select
-          placeholder='language'
-          defaultValue={options[defaultIdx]}
-          onChange={(option) => navigate(`${option.path}`)}
-          options={options}
-          styles={langMenuStyles}
-        />
+        <Button onClick={() => LocalizedNavigate('/contribute', lang)}>{contribute}</Button>
+        <LangSelect lang={lang}/>
         {menuLinks.map((m, i) => (
           <NavLink key={i.toString()}>
             <Dappy src={`${config.ASSETS_URL}/images/Dappy${i + 1}.png`} />
@@ -50,21 +25,15 @@ export default function Navbar({ menuLinks }) {
           </NavLink>
         ))
         }
-        <SmallLink onClick={() => LocalizedNavigate('/imprint', locale)}>Imprint</SmallLink>
-        <SmallLink onClick={() => LocalizedNavigate('/privacy', locale)}>Privacy Policy</SmallLink>
+        <SmallLink onClick={() => LocalizedNavigate('/imprint', lang)}>Imprint</SmallLink>
+        <SmallLink onClick={() => LocalizedNavigate('/privacy', lang)}>Privacy Policy</SmallLink>
       </Wrapper>
       <MobileWrapper>
         <MenuTrigger onClick={() => setShown(prev => !prev)}>Menu {shown ? <>&#10514;</> : <>&#10515;</>}</MenuTrigger>
         {shown &&
           <MobileMenu>
-            <Button onClick={() => LocalizedNavigate('/contribute', locale)}>Contribute</Button>
-            <Select
-              placeholder='language'
-              defaultValue={options[defaultIdx]}
-              onChange={(option) => navigate(`${option.path}`)}
-              options={options}
-              styles={langMenuStyles}
-            />
+            <Button onClick={() => LocalizedNavigate('/contribute', lang)}>Contribute</Button>
+            <LangSelect lang={lang} />
             {
               menuLinks.map((m, i) => (
                 <NavLink key={i.toString()}>
