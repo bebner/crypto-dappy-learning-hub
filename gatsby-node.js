@@ -47,7 +47,7 @@ exports.onCreateNode = ({ node, actions }) => {
     const name = path.basename(node.fileAbsolutePath, `.mdx`)
 
     // check if the mdx file is default language
-    const isDefault = (name.split(`.`).length === 1)
+    const isDefault = !Object.keys(i18n.langs).includes(name.split(`.`).pop())
 
     // If it's the default language, pass the defaultLang for that
     const lang = isDefault ? i18n.defaultLang : name.split(`.`).pop()
