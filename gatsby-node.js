@@ -1,10 +1,9 @@
 const path = require(`path`)
 const i18n = require(`./src/config/i18n`)
-const {
-  localizedSlug,
-  removeTrailingSlash,
-} = require(`./src/utils/i18n-helpers`)
+const { localizedSlug } = require(`./src/utils/i18n-helpers`)
 
+// From official Gatsby i18n example:
+// https://github.com/gatsbyjs/gatsby/tree/master/examples/using-i18n
 exports.onCreatePage = ({ page, actions }) => {
   const { createPage, deletePage } = actions
   const langs = i18n.langs
@@ -58,8 +57,12 @@ exports.onCreateNode = ({ node, actions }) => {
   }
 }
 
+// Create pages for mdx files under missions folder
+// If `name.lang.mdx` file is lacked, use `name.mdx` as default
 exports.createPages = async ({ actions, graphql, reporter }) => {
-  const result = await graphql(`
+
+  // all mdx files for i18n content
+  const resultAll = await graphql(`
     query {
       allMdx {
         nodes {
@@ -74,25 +77,57 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       }
     }
   `);
-
-  if (result.errors) {
-    reporter.panic('failed to create posts ', result.errors);
+  if (resultAll.errors) {
+    reporter.panic('failed to fetch all posts ', resultAll.errors);
   }
 
-  const pages = result.data.allMdx.nodes;
+  // default lang mdx files
+  const resultDefault = await graphql(`
+    query {
+      allMdx(filter: {fields: {isDefault: {eq: true}}}) {
+        nodes {
+          fields {
+            isDefault
+            lang
+          }
+          frontmatter {
+            path
+          }
+        }
+      }
+    }
+  `)
 
-  pages.forEach((page) => {
-    const isDefault = page.fields.isDefault
-    const slug = page.frontmatter.path
-    const lang = page.fields.lang
+  if (resultDefault.errors) {
+    reporter.panic('failed to fetch default lang posts ', resultDefault.errors);
+  }
 
-    actions.createPage({
-      path: localizedSlug({ isDefault, lang, slug }),
-      component: require.resolve('./src/templates/mission.js'),
-      context: {
-        lang: lang,
-        pathSlug: slug,
-      },
+  const pagesAll = resultAll.data.allMdx.nodes;
+  const pagesDefault = resultDefault.data.allMdx.nodes;
+
+  // create page for `defalt lang mdx path` * `i18n lang`
+  pagesDefault.forEach((pageDefault) => {
+    Object.keys(i18n.langs).map((lang) => {
+      // If tartget lang mdx is lacked, use default lang mdx
+      const page = pagesAll.find(page => {
+        const checkPath = page.frontmatter.path === pageDefault.frontmatter.path
+        const checkLang = page.fields.lang === lang
+        return checkPath && checkLang
+      }) || pageDefault
+
+      const contentLang = page.fields.lang
+      const isDefault = lang === i18n.defaultLang
+      const slug = page.frontmatter.path
+
+      actions.createPage({
+        path: localizedSlug({ isDefault, lang, slug }),
+        component: require.resolve('./src/templates/mission.js'),
+        context: {
+          lang: lang,
+          contentLang: contentLang,
+          pathSlug: slug,
+        },
+      });
     });
   });
 };
