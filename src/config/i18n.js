@@ -6,6 +6,11 @@ module.exports = {
       name: 'English',
       countryCode: 'GB',
     },
+    vn: {
+      path: `vn`,
+      name: 'Tiếng Việt',
+      countryCode: 'VN',
+    },
     ja: {
       path: `ja`,
       name: '日本語',

@@ -17,7 +17,7 @@ export default function Navbar({ menuLinks }) {
     <>
       <Wrapper>
         <Button onClick={() => LocalizedNavigate('/contribute', lang)}>{contribute}</Button>
-        <LangSelect lang={lang}/>
+        <LangSelect />
         {menuLinks.map((m, i) => (
           <NavLink key={i.toString()}>
             <Dappy src={`${config.ASSETS_URL}/images/Dappy${i + 1}.png`} />
@@ -33,7 +33,7 @@ export default function Navbar({ menuLinks }) {
         {shown &&
           <MobileMenu>
             <Button onClick={() => LocalizedNavigate('/contribute', lang)}>Contribute</Button>
-            <LangSelect lang={lang} />
+            <LangSelect />
             {
               menuLinks.map((m, i) => (
                 <NavLink key={i.toString()}>
