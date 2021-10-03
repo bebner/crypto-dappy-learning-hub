@@ -1,0 +1,62 @@
+---
+title: "Mission #6"
+date: "2021-07-23"
+path: '/missions/mission-6'
+---
+import YoutubeEmbed from "../components/youtube.js"
+
+やりました！Dappy の mint が成功しました！ユーザーにも好評です。毎日、何千人ものユーザー登録が行われています。
+しかし、ユーザーの中には、1つの Dappy だけでは満足できず、Dappy パックを求める人もいます。
+Dappy パックが欲しい！
+
+---
+
+<img src="https://d1mtab9ltfdpua.cloudfront.net/images/Dappy8.png" width="20%" style="float: left;" />
+
+### Lara Dappy
+
+プロダクト・マネージャー
+
+*やあ！Dappy パックを実装しましょう！*
+
+*Dappy パックでは、1つのファミリーの複数の Dappy を一度に購入できるようにしたいと考えています。*
+
+*どうすれば実現できるか確認してもらえますか？ありがとうございます！*
+
+---
+
+## ミッション概要
+
+今回のミッションは、Dappyの mint プロセスに、パックの機能を実装することです。
+
+このミッションの開始ブランチは *[mission-6](https://github.com/bebner/crypto-dappy/tree/mission-6)* です。
+
+
+## Dappy パック： コントラクトの概要
+
+この短い概要では、パックの mint に関わるコントラクトレベルのデータ構造と機能をすべて説明します。
+コントラクト側を理解することで フロントエンドのコードを書くのが楽になるでしょう。
+
+<YoutubeEmbed embedId="ev7LwnH0gl0"/>
+
+## Dappy パックのリスト表示
+
+まず最初にすべきこと：どのようなパックが購入可能かを知る必要があります。
+そのためには、Dappy を mint 可能なファミリーを、スマートコントラクトに問い合わせます。
+
+<YoutubeEmbed embedId="INunRFdPuek"/>
+
+
+## Dappy パックのファミリーを取得する
+
+ファミリーごとに、様々な Dappy テンプレートが用意されており、そこから実際のパック内容をランダムに選択します。
+この動画では、あるファミリーに関連するテンプレートの情報を取得する方法をご紹介します。
+
+<YoutubeEmbed embedId="1AuUcBDz-To"/>
+
+## Dappy パックの mint
+
+このアプリケーションの最後の、そして最も複雑な操作が実装されようとしています。
+Dappy パックが購入されると、1つのファミリーから複数の Dappy を一度に mint します。
+
+<YoutubeEmbed embedId="8Rav4AmqSKY"/>

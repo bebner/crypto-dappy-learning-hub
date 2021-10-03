@@ -1,22 +1,31 @@
 import React from 'react'
 import styled from 'styled-components'
-import { navigate } from 'gatsby'; //import navigate from gatsby
+import { LocaleContext } from "./layout"
 import { config } from '../config/config'
+import useTranslations from "./useTranslations"
+import localizedNavigate from './localizedNavigate'
+import parse, { domToReact } from 'html-react-parser';
 
-export default function header() {
+export default function Header() {
+  const { lang } = React.useContext(LocaleContext)
+  const { title, subtitle, beta, feedback } = useTranslations()
+  const replace = (node) => {
+    if(node.type ==="tag" && node.name === "highlight"){ return <Highlight>{ domToReact(node.children) }</Highlight> }
+  }
+
   return (
     <Wrapper>
       <HeroImage
-        onClick={() => navigate('/')}
+        onClick={() => localizedNavigate('/', lang)}
         src={`${config.ASSETS_URL}/images/Dappy1.png`} />
-      <Content onClick={() => navigate('/')}>
-        <Title><Highlight>Crypto</Highlight>Dappy</Title>
-        <SubTitle>The modern way to <Highlight>learn blockchain</Highlight></SubTitle>
+      <Content onClick={() => localizedNavigate('/', lang)}>
+        <Title>{parse(title, { replace })}</Title>
+        <SubTitle>{parse(subtitle, { replace })}</SubTitle>
       </Content>
       <Tag>
-        <h3 style={{ margin: 0 }}>Beta</h3>
+        <h3 style={{ margin: 0 }}>{beta}</h3>
         <CTA href="https://forum.onflow.org/t/community-feedback-for-cryptodappy-beta">
-          <span style={{ marginRight: ".3rem" }}>👉</span>Leave Feedback
+          <span style={{ marginRight: ".3rem" }}>👉</span>{feedback}
         </CTA>
       </Tag>
     </Wrapper>

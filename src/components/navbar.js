@@ -1,36 +1,44 @@
-import { Link, navigate } from 'gatsby'
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { config } from '../config/config'
 import Button from './button'
+import { LocaleContext } from "./layout"
+import useTranslations from "./useTranslations"
+import LocalizedLink from './localizedLink'
+import localizedNavigate from './localizedNavigate'
+import LangSelect from './langSelect'
 
 export default function Navbar({ menuLinks }) {
   const [shown, setShown] = useState(false)
+  const { lang } = React.useContext(LocaleContext)
+  const { contribute } = useTranslations()
 
   return (
     <>
       <Wrapper>
-        <Button onClick={() => navigate('/contribute')}>Contribute</Button>
+        <Button onClick={() => localizedNavigate('/contribute', lang)}>{contribute}</Button>
+        <LangSelect />
         {menuLinks.map((m, i) => (
-          <NavLink>
+          <NavLink key={i.toString()}>
             <Dappy src={`${config.ASSETS_URL}/images/Dappy${i + 1}.png`} />
-            <Link to={m.link}>{m.name}</Link>
+            <LocalizedLink to={m.link}>{m.name}</LocalizedLink >
           </NavLink>
         ))
         }
-        <SmallLink onClick={() => navigate('/imprint')}>Imprint</SmallLink>
-        <SmallLink onClick={() => navigate('/privacy')}>Privacy Policy</SmallLink>
+        <SmallLink onClick={() => localizedNavigate('/imprint', lang)}>Imprint</SmallLink>
+        <SmallLink onClick={() => localizedNavigate('/privacy', lang)}>Privacy Policy</SmallLink>
       </Wrapper>
       <MobileWrapper>
         <MenuTrigger onClick={() => setShown(prev => !prev)}>Menu {shown ? <>&#10514;</> : <>&#10515;</>}</MenuTrigger>
         {shown &&
           <MobileMenu>
-            <Button onClick={() => navigate('/contribute')}>Contribute</Button>
+            <Button onClick={() => localizedNavigate('/contribute', lang)}>Contribute</Button>
+            <LangSelect />
             {
               menuLinks.map((m, i) => (
-                <NavLink>
+                <NavLink key={i.toString()}>
                   <Dappy src={`${config.ASSETS_URL}/images/Dappy${i + 1}.png`} />
-                  <Link to={m.link}>{m.name}</Link>
+                  <LocalizedLink to={m.link}>{m.name}</LocalizedLink>
                 </NavLink>
               ))
             }
@@ -40,7 +48,6 @@ export default function Navbar({ menuLinks }) {
     </>
   )
 }
-
 
 const Wrapper = styled.div`
   margin-top: 1.5rem;

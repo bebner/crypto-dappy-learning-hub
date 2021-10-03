@@ -62,6 +62,13 @@ module.exports = {
       }
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/config/translations`,
+        name: `translations`,
+      },
+    },    
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: 'CryptoDappy Learning Hub',
@@ -97,5 +104,6 @@ module.exports = {
         environments: ['production']
       },
     },
+    `gatsby-transformer-json`,
   ],
 };
