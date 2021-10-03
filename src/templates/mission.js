@@ -3,10 +3,10 @@ import { MDXRenderer } from 'gatsby-plugin-mdx';
 import React from 'react';
 
 export const query = graphql`
-  query($locale: String!, $pathSlug: String!) {
+  query($lang: String!, $pathSlug: String!) {
     mdx(
       frontmatter: { path: { eq: $pathSlug } }
-      fields: { locale: { eq: $locale } }
+      fields: { lang: { eq: $lang } }
     ) {
       frontmatter {
         title

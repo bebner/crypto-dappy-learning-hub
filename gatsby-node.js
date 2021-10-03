@@ -1,38 +1,34 @@
 const path = require(`path`)
-const locales = require(`./src/config/i18n`)
+const i18n = require(`./src/config/i18n`)
 const {
   localizedSlug,
-  findKey,
   removeTrailingSlash,
-} = require(`./src/utils/gatsby-node-helpers`)
+} = require(`./src/utils/i18n-helpers`)
 
 exports.onCreatePage = ({ page, actions }) => {
   const { createPage, deletePage } = actions
+  const langs = i18n.langs
 
   // First delete the incoming page that was automatically created by Gatsby
   // So everything in src/pages/
   deletePage(page)
 
-  // Grab the keys ('en' & 'de') of locales and map over them
-  Object.keys(locales).map(lang => {
-    // Use the values defined in "locales" to construct the path
-    const localizedPath = locales[lang].default
-      ? page.path
-      : `${locales[lang].path}${page.path}`
+  Object.keys(langs).map(lang => {
+    const isDefault = (lang === i18n.defaultLang)
+    const slug = page.path
+    // Use the values defined in "langs" to construct the path
+    const localizedPath = localizedSlug({ isDefault, lang, slug})
 
     return createPage({
       // Pass on everything from the original page
       ...page,
-      // Since page.path returns with a trailing slash (e.g. "/de/")
-      // We want to remove that
-      path: removeTrailingSlash(localizedPath),
+      path: localizedPath,
       // Pass in the locale as context to every page
       // This context also gets passed to the src/components/layout file
       // This should ensure that the locale is available on every page
       context: {
         ...page.context,
-        locale: lang,
-        dateFormat: locales[lang].dateFormat,
+        lang: lang
       },
     })
   })
@@ -48,22 +44,16 @@ exports.onCreateNode = ({ node, actions }) => {
   if (node.internal.type === `Mdx`) {
     // Use path.basename
     // https://nodejs.org/api/path.html#path_path_basename_path_ext
+    // name is defined with "pagename.lang" or "pagename" (defualt lang)
     const name = path.basename(node.fileAbsolutePath, `.mdx`)
 
-    // Check if post.name is "index" -- because that's the file for default language
-    // (In this case "en")
+    // check if the mdx file is default language
     const isDefault = (name.split(`.`).length === 1)
 
-    // Find the key that has "default: true" set (in this case it returns "en")
-    const defaultKey = findKey(locales, o => o.default === true)
+    // If it's the default language, pass the defaultLang for that
+    const lang = isDefault ? i18n.defaultLang : name.split(`.`).pop()
 
-    // Files are defined with "name-with-dashes.lang.mdx"
-    // name returns "name-with-dashes.lang"
-    // So grab the lang from that string
-    // If it's the default language, pass the locale for that
-    const lang = isDefault ? defaultKey : name.split(`.`)[1]
-
-    createNodeField({ node, name: `locale`, value: lang })
+    createNodeField({ node, name: `lang`, value: lang })
     createNodeField({ node, name: `isDefault`, value: isDefault })
   }
 }
@@ -75,7 +65,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         nodes {
           fields {
             isDefault
-            locale
+            lang
           }
           frontmatter {
             path
@@ -92,15 +82,15 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const pages = result.data.allMdx.nodes;
 
   pages.forEach((page) => {
-    const slug = page.frontmatter.path
-    const locale = page.fields.locale
     const isDefault = page.fields.isDefault
+    const slug = page.frontmatter.path
+    const lang = page.fields.lang
 
     actions.createPage({
-      path: localizedSlug({ isDefault, locale, slug }),
+      path: localizedSlug({ isDefault, lang, slug }),
       component: require.resolve('./src/templates/mission.js'),
       context: {
-        locale: locale,
+        lang: lang,
         pathSlug: slug,
       },
     });

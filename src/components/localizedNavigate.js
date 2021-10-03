@@ -1,11 +1,11 @@
 import { navigate } from 'gatsby'; //import navigate from gatsby
-import locales from "../config/i18n"
+import i18n from "../config/i18n"
+import { localizedSlug } from "../utils/i18n-helpers"
 
-const LocalizedNavigate = (path, locale) => {
-    const localizedPath = ((locale in locales && locales[locale].default) || path.indexOf('//') !== -1)
-    ? path
-    : `/${locales[locale].path}${path}`
-    navigate(localizedPath)
+const LocalizedNavigate = (path, lang) => {
+    const isDefault = (lang === i18n.defaultLang)
+    const slug = path
+    navigate(localizedSlug({isDefault, lang, slug}))
   }
 
 export default LocalizedNavigate;
