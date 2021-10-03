@@ -4,7 +4,7 @@ import Select from 'react-select';
 import ReactCountryFlag from "react-country-flag"
 import i18n from "../config/i18n"
 
-export default function LangSelect({ locale }) {
+export default function LangSelect({ lang }) {
     const langMenuStyles = {
         container: (provided, state) => ({
           ...provided,
@@ -30,7 +30,7 @@ export default function LangSelect({ locale }) {
             label: <><ReactCountryFlag countryCode={langs[lang].countryCode} svg style={flagStyle} /> {langs[lang].name}</>
         }
     })
-    const defaultIdx = options.findIndex(e => e.value === locale)
+    const defaultIdx = options.findIndex(e => e.value === lang)
 
     return (
         <Select

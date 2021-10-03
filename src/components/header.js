@@ -7,7 +7,7 @@ import LocalizedNavigate from './localizedNavigate'
 import parse, { domToReact } from 'html-react-parser';
 
 export default function Header() {
-  const { locale } = React.useContext(LocaleContext)
+  const { lang } = React.useContext(LocaleContext)
   const { title, subtitle, beta, feedback } = useTranslations()
   const replace = (node) => {
     if(node.type ==="tag" && node.name === "highlight"){ return <Highlight>{ domToReact(node.children) }</Highlight> }
@@ -16,9 +16,9 @@ export default function Header() {
   return (
     <Wrapper>
       <HeroImage
-        onClick={() => LocalizedNavigate('/', locale)}
+        onClick={() => LocalizedNavigate('/', lang)}
         src={`${config.ASSETS_URL}/images/Dappy1.png`} />
-      <Content onClick={() => LocalizedNavigate('/', locale)}>
+      <Content onClick={() => LocalizedNavigate('/', lang)}>
         <Title>{parse(title, { replace })}</Title>
         <SubTitle>{parse(subtitle, { replace })}</SubTitle>
       </Content>
