@@ -115,7 +115,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         return checkPath && checkLang
       }) || pageDefault
 
-      const contentLang = page.fields.lang
+      const mdxLang = page.fields.lang
       const isDefault = lang === i18n.defaultLang
       const slug = page.frontmatter.path
 
@@ -124,7 +124,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         component: require.resolve('./src/templates/mission.js'),
         context: {
           lang: lang,
-          contentLang: contentLang,
+          mdxLang: mdxLang,
           pathSlug: slug,
         },
       });
