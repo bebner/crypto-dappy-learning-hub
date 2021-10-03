@@ -6,6 +6,6 @@ const LocalizedNavigate = (path, lang) => {
     const isDefault = (lang === i18n.defaultLang)
     const slug = path
     navigate(localizedSlug({isDefault, lang, slug}))
-  }
+}
 
 export default LocalizedNavigate;

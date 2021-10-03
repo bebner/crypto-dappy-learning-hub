@@ -1,10 +1,12 @@
 import React from 'react'
 import { navigate } from 'gatsby-link';
 import Select from 'react-select';
+import { LocaleContext } from "./layout"
 import ReactCountryFlag from "react-country-flag"
 import i18n from "../config/i18n"
 
-export default function LangSelect({ lang }) {
+export default function LangSelect() {
+    const { lang } = React.useContext(LocaleContext)
     const langMenuStyles = {
         container: (provided, state) => ({
           ...provided,
