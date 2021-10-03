@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { LocaleContext } from "./layout"
 import { config } from '../config/config'
 import useTranslations from "./useTranslations"
-import LocalizedNavigate from './localizedNavigate'
+import localizedNavigate from './localizedNavigate'
 import parse, { domToReact } from 'html-react-parser';
 
 export default function Header() {
@@ -16,9 +16,9 @@ export default function Header() {
   return (
     <Wrapper>
       <HeroImage
-        onClick={() => LocalizedNavigate('/', lang)}
+        onClick={() => localizedNavigate('/', lang)}
         src={`${config.ASSETS_URL}/images/Dappy1.png`} />
-      <Content onClick={() => LocalizedNavigate('/', lang)}>
+      <Content onClick={() => localizedNavigate('/', lang)}>
         <Title>{parse(title, { replace })}</Title>
         <SubTitle>{parse(subtitle, { replace })}</SubTitle>
       </Content>

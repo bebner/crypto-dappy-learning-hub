@@ -5,7 +5,7 @@ import Button from './button'
 import { LocaleContext } from "./layout"
 import useTranslations from "./useTranslations"
 import LocalizedLink from './localizedLink'
-import LocalizedNavigate from './localizedNavigate'
+import localizedNavigate from './localizedNavigate'
 import LangSelect from './langSelect'
 
 export default function Navbar({ menuLinks }) {
@@ -16,7 +16,7 @@ export default function Navbar({ menuLinks }) {
   return (
     <>
       <Wrapper>
-        <Button onClick={() => LocalizedNavigate('/contribute', lang)}>{contribute}</Button>
+        <Button onClick={() => localizedNavigate('/contribute', lang)}>{contribute}</Button>
         <LangSelect />
         {menuLinks.map((m, i) => (
           <NavLink key={i.toString()}>
@@ -25,14 +25,14 @@ export default function Navbar({ menuLinks }) {
           </NavLink>
         ))
         }
-        <SmallLink onClick={() => LocalizedNavigate('/imprint', lang)}>Imprint</SmallLink>
-        <SmallLink onClick={() => LocalizedNavigate('/privacy', lang)}>Privacy Policy</SmallLink>
+        <SmallLink onClick={() => localizedNavigate('/imprint', lang)}>Imprint</SmallLink>
+        <SmallLink onClick={() => localizedNavigate('/privacy', lang)}>Privacy Policy</SmallLink>
       </Wrapper>
       <MobileWrapper>
         <MenuTrigger onClick={() => setShown(prev => !prev)}>Menu {shown ? <>&#10514;</> : <>&#10515;</>}</MenuTrigger>
         {shown &&
           <MobileMenu>
-            <Button onClick={() => LocalizedNavigate('/contribute', lang)}>Contribute</Button>
+            <Button onClick={() => localizedNavigate('/contribute', lang)}>Contribute</Button>
             <LangSelect />
             {
               menuLinks.map((m, i) => (
