@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { navigate } from 'gatsby'; //import navigate from gatsby
 import { config } from '../config/config'
+import { Trans } from 'gatsby-plugin-react-i18next';
 
 export default function header() {
   return (
@@ -14,7 +15,7 @@ export default function header() {
         <SubTitle>The modern way to <Highlight>learn blockchain</Highlight></SubTitle>
       </Content>
       <Tag>
-        <h3 style={{ margin: 0 }}>Beta</h3>
+        <h3 style={{ margin: 0 }}><Trans>Beta</Trans></h3>
         <CTA href="https://forum.onflow.org/t/community-feedback-for-cryptodappy-beta">
           <span style={{ marginRight: ".3rem" }}>👉</span>Leave Feedback
         </CTA>

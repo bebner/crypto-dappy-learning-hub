@@ -1,16 +1,17 @@
-import { navigate } from "gatsby"
+import { graphql, navigate } from "gatsby"
 import * as React from "react"
 import Layout from "../components/layout"
 import YoutubeEmbed from "../components/youtube"
 import { content } from "../config/index-content"
-
-
+import { Trans } from 'gatsby-plugin-react-i18next';
 
 const IndexPage = () => {
   return (
     <Layout>
       <main>
-        <h1>Learn blockchain with CryptoDappy</h1>
+        <h1>
+          <Trans>Learn blockchain with CryptoDappy</Trans>
+        </h1>
         <p>
           CryptoDappy is a <strong>mission-based online course</strong> directed at developers who want to get started learning
           blockchain development.
@@ -40,3 +41,17 @@ const IndexPage = () => {
 
 
 export default IndexPage
+
+export const query = graphql`
+  query($language: String!) {
+    locales: allLocale(filter: {language: {eq: $language}}) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
+  }
+`;

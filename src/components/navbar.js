@@ -1,16 +1,19 @@
-import { Link, navigate } from 'gatsby'
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { config } from '../config/config'
 import Button from './button'
+import { Link, useI18next } from 'gatsby-plugin-react-i18next';
+import LangSelect from './langSelect'
 
 export default function Navbar({ menuLinks }) {
   const [shown, setShown] = useState(false)
+  const {navigate} = useI18next();
 
   return (
     <>
       <Wrapper>
         <Button onClick={() => navigate('/contribute')}>Contribute</Button>
+        <LangSelect />
         {menuLinks.map((m, i) => (
           <NavLink>
             <Dappy src={`${config.ASSETS_URL}/images/Dappy${i + 1}.png`} />
@@ -25,6 +28,7 @@ export default function Navbar({ menuLinks }) {
         <MenuTrigger onClick={() => setShown(prev => !prev)}>Menu {shown ? <>&#10514;</> : <>&#10515;</>}</MenuTrigger>
         {shown &&
           <MobileMenu>
+            <LangSelect />
             <Button onClick={() => navigate('/contribute')}>Contribute</Button>
             {
               menuLinks.map((m, i) => (
