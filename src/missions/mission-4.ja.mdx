@@ -1,0 +1,61 @@
+---
+title: "Mission #4"
+date: "2021-07-23"
+path: '/missions/mission-4'
+---
+
+import YoutubeEmbed from "../components/youtube.js"
+
+あなたがブロックチェーンを少しずつ使いこなせるようになると、同僚たちはあなたが身につけた新しいスキルに気付き始めました。そして、同僚の一人が Slack であなたに再び声をかけるまで時間はかかりませんでした。今回のミッションは、「ユーザーが Dappy の支払いに FUSD を使えるようにすること」です。
+
+---
+
+<img src="https://d1mtab9ltfdpua.cloudfront.net/images/Dappy12.png" width="20%" style="float: left;" />
+
+### Hana Dappy
+
+シニア・デベロッパー
+
+*どうも！私たちは支払いのために FUSD を統合したいです！* 📦
+*Heya, we want to integrate FUSD for payments!* 📦
+
+*FUSD は、Flow のステーブルコインです。これは US ドルを裏付けとした Fungible Token です*
+
+*ユーザーが CryptoDappy に FUSD を使えるようにするために、いくつかのロジックを書く必要があります。それを調べてもらえますか？*
+
+*あなたは凄い 💪 よろしくお願いします!!*
+
+---
+
+## ミッション概要
+
+このミッションでは、Fungible Token と Flow のステーブルコインである FUSD に焦点を当てます。
+
+このミッションの開始ブランチは [mission-4](https://github.com/bebner/crypto-dappy/tree/mission-4) です。
+
+## ひとやすみ: スマートコントラクトの概要
+
+このレッスンのトピックを始める前に、CryptoDappy を動かしているスマートコントラクトについてもっと知っておくといいかもしれません。この大まかな説明は、アプリケーションの全体的なアーキテクチャのメンタルモデル構築に役立ちます。
+
+<YoutubeEmbed embedId="SpcdN9_CqsM"/>
+
+## Fungible Token: 大まかな概要
+
+FUSD は Flow 上の Fungible Token 規格の実装であるため、FUSD を理解するには Fungible Token の概念をしっかりと理解する必要があります。
+
+<YoutubeEmbed embedId="knfQSfkxBi0"/>
+
+## FUSD: Vault と残高のチェック
+
+大まかな概念を理解した後は、FUSD を実装するためのコードに飛び込んで、ユーザーの Vault（保管庫）と FUSD 残高をチェックしましょう。
+
+<YoutubeEmbed embedId="wuR9btm1a6w"/>
+
+## テストネットで FUSD を入手する方法
+
+**Getting Flow and FUSD**
+
+- [Testnet Faucet](https://testnet-faucet.onflow.org/) から FLOW を入手
+- [Bloctoswap Testnet版](https://swap-testnet.blocto.app/) から FUSD を入手
+
+<YoutubeEmbed embedId="q8vcEGe95js"/>
