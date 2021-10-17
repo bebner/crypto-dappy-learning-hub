@@ -12,12 +12,12 @@ export default function header() {
         src={`${config.ASSETS_URL}/images/Dappy1.png`} />
       <Content onClick={() => navigate('/')}>
         <Title><Highlight>Crypto</Highlight>Dappy</Title>
-        <SubTitle>The modern way to <Highlight>learn blockchain</Highlight></SubTitle>
+        <SubTitle><Trans i18nKey="subtitle">The modern way to <Highlight>learn blockchain</Highlight></Trans></SubTitle>
       </Content>
       <Tag>
         <h3 style={{ margin: 0 }}><Trans>Beta</Trans></h3>
         <CTA href="https://forum.onflow.org/t/community-feedback-for-cryptodappy-beta">
-          <span style={{ marginRight: ".3rem" }}>👉</span>Leave Feedback
+          <span style={{ marginRight: ".3rem" }}>👉</span><Trans>Leave Feedback</Trans>
         </CTA>
       </Tag>
     </Wrapper>

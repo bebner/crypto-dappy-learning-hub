@@ -4,13 +4,22 @@ import React from 'react';
 import Layout from '../components/layout';
 
 export const query = graphql`
-  query($pathSlug: String!) {
+  query($pathSlug: String!, $language: String!) {
     mdx(frontmatter: { path: { eq: $pathSlug } }) {
       frontmatter {
         title
         path
       }
       body
+    }
+    locales: allLocale(filter: {language: {eq: $language}}) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
     }
   }
 `;
