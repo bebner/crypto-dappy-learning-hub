@@ -25,11 +25,11 @@ export default function Navbar({ menuLinks }) {
         <SmallLink onClick={() => navigate('/privacy')}>Privacy Policy</SmallLink>
       </Wrapper>
       <MobileWrapper>
-        <MenuTrigger onClick={() => setShown(prev => !prev)}>Menu {shown ? <>&#10514;</> : <>&#10515;</>}</MenuTrigger>
+        <MenuTrigger onClick={() => setShown(prev => !prev)}><Trans>Menu</Trans> {shown ? <>&#10514;</> : <>&#10515;</>}</MenuTrigger>
         {shown &&
           <MobileMenu>
             <LangSelect />
-            <Button onClick={() => navigate('/contribute')}>Contribute</Button>
+            <Button onClick={() => navigate('/contribute')}><Trans>Contribute</Trans></Button>
             {
               menuLinks.map((m, i) => (
                 <NavLink>
