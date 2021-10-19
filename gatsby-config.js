@@ -74,6 +74,7 @@ module.exports = {
         localeJsonSourceName: `locale`, // name given to `gatsby-source-filesystem` plugin.
         languages: [`en`, `ja`, `vn`],
         defaultLanguage: `en`,
+        redirect: false,
         // if you are using Helmet, you must include siteUrl, and make sure you add http:https
         siteUrl: `https://www.cryptodappy.com`,
         // you can pass any i18next options
@@ -87,7 +88,7 @@ module.exports = {
         },
         pages: [
           {
-            matchPath: '/:lang?/:slug+',
+            matchPath: '/:lang(ja|vn)?/:slug+',
             getLanguageFromPath: true
           }
         ]

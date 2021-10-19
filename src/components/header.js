@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
-import { navigate } from 'gatsby'; //import navigate from gatsby
 import { config } from '../config/config'
-import { Trans } from 'gatsby-plugin-react-i18next';
+import { Trans, useI18next } from 'gatsby-plugin-react-i18next';
 
-export default function header() {
+export default function Header() {
+  const {navigate} = useI18next();
   return (
     <Wrapper>
       <HeroImage
