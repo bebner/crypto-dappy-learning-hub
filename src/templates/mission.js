@@ -4,8 +4,11 @@ import React from 'react';
 import Layout from '../components/layout';
 
 export const query = graphql`
-  query($pathSlug: String!, $language: String!) {
-    mdx(frontmatter: { path: { eq: $pathSlug } }) {
+  query($pathSlug: String!, $language: String!, $mdxLang: String!) {
+    mdx(
+        frontmatter: { path: { eq: $pathSlug } }
+        fields: { mdxLang: { eq: $mdxLang } }
+      ) {
       frontmatter {
         title
         path
