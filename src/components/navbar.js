@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { config } from '../config/config'
 import Button from './button'
-import { Link, useI18next } from 'gatsby-plugin-react-i18next';
+import { Trans, Link as LocalLink, useI18next } from 'gatsby-plugin-react-i18next';
 import LangSelect from './langSelect'
 
 export default function Navbar({ menuLinks }) {
@@ -12,12 +12,12 @@ export default function Navbar({ menuLinks }) {
   return (
     <>
       <Wrapper>
-        <Button onClick={() => navigate('/contribute')}>Contribute</Button>
+        <Button onClick={() => navigate('/contribute')}><Trans>Contribute</Trans></Button>
         <LangSelect />
         {menuLinks.map((m, i) => (
           <NavLink>
             <Dappy src={`${config.ASSETS_URL}/images/Dappy${i + 1}.png`} />
-            <Link to={m.link}>{m.name}</Link>
+            <Link to={m.link}><Trans>{m.name}</Trans></Link>
           </NavLink>
         ))
         }
@@ -25,16 +25,16 @@ export default function Navbar({ menuLinks }) {
         <SmallLink onClick={() => navigate('/privacy')}>Privacy Policy</SmallLink>
       </Wrapper>
       <MobileWrapper>
-        <MenuTrigger onClick={() => setShown(prev => !prev)}>Menu {shown ? <>&#10514;</> : <>&#10515;</>}</MenuTrigger>
+        <MenuTrigger onClick={() => setShown(prev => !prev)}><Trans>Menu</Trans> {shown ? <>&#10514;</> : <>&#10515;</>}</MenuTrigger>
         {shown &&
           <MobileMenu>
             <LangSelect />
-            <Button onClick={() => navigate('/contribute')}>Contribute</Button>
+            <Button onClick={() => navigate('/contribute')}><Trans>Contribute</Trans></Button>
             {
               menuLinks.map((m, i) => (
                 <NavLink>
                   <Dappy src={`${config.ASSETS_URL}/images/Dappy${i + 1}.png`} />
-                  <Link to={m.link}>{m.name}</Link>
+                  <Link to={m.link}><Trans>{m.name}</Trans></Link>
                 </NavLink>
               ))
             }
@@ -45,6 +45,16 @@ export default function Navbar({ menuLinks }) {
   )
 }
 
+const Link = ({ to, ...props }) => {
+  const isHash = /^#/.test(to)
+  const isInternal = /^\/(?!\/)/.test(to)
+
+  return (isHash || !isInternal) ? (
+    <a {...props} href={to} rel="noopener noreferrer" />
+   ) : (
+    <LocalLink to={to} {...props} />
+   )
+}
 
 const Wrapper = styled.div`
   margin-top: 1.5rem;
