@@ -36,6 +36,34 @@ module.exports = {
         link: '/missions/mission-6'
       },
       {
+        name: 'Market Mission #1',
+        link: '/missions/market-mission-1'
+      },
+      {
+        name: 'Market Mission #2',
+        link: '/missions/market-mission-2'
+      },
+      {
+        name: 'Market Mission #3',
+        link: '/missions/market-mission-3'
+      },
+      {
+        name: 'Market Mission #4',
+        link: '/missions/market-mission-4'
+      },
+      {
+        name: 'Market Mission #5',
+        link: '/missions/market-mission-5'
+      },
+      {
+        name: 'Market Mission #6 (Bonus)',
+        link: '/missions/market-mission-6'
+      },
+      {
+        name: 'Market Mission #7 (Bonus)',
+        link: '/missions/market-mission-7'
+      },
+      {
         name: 'Resources',
         link: '/resources'
       },
