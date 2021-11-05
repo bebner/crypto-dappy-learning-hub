@@ -3,6 +3,7 @@ import * as React from "react"
 import Layout from "../components/layout"
 import YoutubeEmbed from "../components/youtube"
 import { content } from "../config/index-content"
+import { marketContent } from "../config/index-market-content"
 
 
 
@@ -32,7 +33,15 @@ const IndexPage = () => {
           </>
         ))
         }
-
+        <hr/>
+      <h2>Market Missions</h2>
+      {marketContent.map(c => (
+          <>
+            <h3 style={{ cursor: "pointer" }}><a onClick={() => navigate(c.href)}>{c.title}</a></h3>
+            <p>{c.text}</p>
+          </>
+        ))
+        }
       </main>
     </Layout>
   )
