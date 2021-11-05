@@ -32,6 +32,6 @@ export const marketContent = [
     {
       title: "💻  Market Mission #7 (Bonus): Deployment Part 2",
       text: "Create your own AWS event monitoring backend using AWS CloudFormation and investigate how it works.",
-      href: "/missions/market-mission-6"
+      href: "/missions/market-mission-7"
     }
   ]
