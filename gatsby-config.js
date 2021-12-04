@@ -72,7 +72,7 @@ module.exports = {
       resolve: `gatsby-plugin-react-i18next`,
       options: {
         localeJsonSourceName: `locale`, // name given to `gatsby-source-filesystem` plugin.
-        languages: [`en`, `ja`, `vn`],
+        languages: [`en`, `ja`, `vn`, `cn`],
         defaultLanguage: `en`,
         redirect: false,
         // if you are using Helmet, you must include siteUrl, and make sure you add http:https
@@ -88,7 +88,7 @@ module.exports = {
         },
         pages: [
           {
-            matchPath: '/:lang(ja|vn)?/:slug+',
+            matchPath: '/:lang(ja|vn|cn)?/:slug+',
             getLanguageFromPath: true
           }
         ]

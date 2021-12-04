@@ -16,5 +16,10 @@ module.exports = {
         name: '日本語',
         countryCode: 'JP',
       },
+      cn: {
+        path: `cn`,
+        name: '中文 (简体)',
+        countryCode: 'CN'
+      },
     }
   }
